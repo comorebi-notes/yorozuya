@@ -1,0 +1,30 @@
+@startuml
+
+entity Admin {
+  id
+  --
+  name
+  email
+  password
+}
+
+entity Author {
+  id
+  --
+  name
+  email
+  twitter
+  link
+  level (管理人か否か)
+}
+
+entity Article {
+  id
+  --
+  title
+  uri (URIを文字列にする場合)
+}
+
+Author }|--|{ Article
+
+@enduml
