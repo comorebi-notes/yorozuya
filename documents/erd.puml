@@ -1,5 +1,26 @@
 @startuml
 
+hide circle
+
+skinparam Shadowing false
+skinparam DefaultFontName "Ricty Diminished"
+skinparam DefaultFontSize 14
+skinparam DefaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam ArrowColor white
+skinparam ArrowThickness 2
+skinparam Padding 2
+skinparam ClassBorderThickness 0
+
+skinparam DefaultFontColor #444
+skinparam BackgroundColor #99b32d
+skinparam ClassBorderColor #99b32d
+skinparam ClassHeaderBackgroundColor #c46
+skinparam ClassBackgroundColor #fff
+skinparam StereotypeCBackgroundColor #fff
+skinparam classFontColor #fff
+
 entity Admin {
   id
   --
@@ -8,23 +29,154 @@ entity Admin {
   password
 }
 
-entity Author {
-  id
-  --
-  name
-  email
-  twitter
-  link
-  level (管理人か否か)
-}
-
 entity Article {
   id
   --
   title
-  uri (URIを文字列にする場合)
+  status
+  category
+  uri
+  released_date
+  eye_catch
+  pre_comment
+  post_comment
+  like
+  --
+  admin_id
+  parent_article_id
 }
 
-Author }|--|{ Article
+entity ArticleCategory {
+  id
+  --
+  article_id
+  category_id
+}
+
+entity Category {
+  id
+  --
+  name
+}
+
+entity ArticleLink {
+  id
+  --
+  title
+  url
+  xorder
+  --
+  article_id
+}
+
+entity Album {
+  id
+  --
+  title
+  comment
+  price
+  event
+  xorder
+  --
+  article_id
+}
+
+entity Music {
+  id
+  --
+  title
+  comment
+  lyrics
+  soundcloud_url
+  xorder
+  --
+  album_id
+}
+
+entity Movie {
+  id
+  --
+  title
+  comment
+  youtube_url
+  nico_url
+  xorder
+  --
+  article_id
+}
+
+entity Artwork {
+  id
+  --
+  title
+  comment
+  image
+  xorder
+  --
+  article_id
+}
+
+entity Comic {
+  id
+  --
+  title
+  comment
+  xorder
+  --
+  article_id
+}
+
+entity ComicPage {
+  id
+  --
+  image
+  comment
+  nombre
+  --
+  article_id
+}
+
+entity ArticleAuthor {
+  id
+  --
+  role
+  --
+  article_id
+  author_id
+}
+
+entity Author {
+  id
+  --
+  name
+  profile
+  icon
+  link
+}
+
+entity AuthorLink {
+  id
+  --
+  site
+  url
+  name
+  --
+  author_id
+}
+
+Admin --{ Article
+Article -{ ArticleCategory
+ArticleCategory }-- Category
+Article -{ ArticleLink
+Article --{ Album
+Album --{ Music
+Article --{ Artwork
+Article --{ Movie
+Article --{ Comic
+Comic --{ ComicPage
+Author -{ ArticleAuthor
+ArticleAuthor }- Article
+Author --{ AuthorLink
+Article |o- Article
 
 @enduml
