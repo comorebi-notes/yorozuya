@@ -29,63 +29,75 @@ entity Admin {
   password
 }
 
-entity Article {
+entity Work {
   id
   --
   title
   status
-  category
   uri
   released_date
   eye_catch
-  pre_comment
-  post_comment
+  description
+  content
   like
   --
   admin_id
-  parent_article_id
+  parent_work_id
 }
 
-entity ArticleCategory {
-  id
-  --
-  article_id
-  category_id
-}
-
-entity Category {
+entity Tag {
   id
   --
   name
+  category
 }
 
-entity ArticleLink {
+entity WorkTag {
+  id
+  --
+  work_id
+  tag_id
+}
+
+entity Comment {
+  id
+  --
+  name
+  email
+  content
+  ip_address
+  --
+  work_id
+  parent_comment_id
+}
+
+entity WorkLink {
   id
   --
   title
   url
   xorder
   --
-  article_id
+  work_id
 }
 
 entity Album {
   id
   --
   title
-  comment
+  description
   price
   event
   xorder
   --
-  article_id
+  work_id
 }
 
 entity Music {
   id
   --
   title
-  comment
+  description
   lyrics
   soundcloud_url
   xorder
@@ -97,51 +109,51 @@ entity Movie {
   id
   --
   title
-  comment
+  description
   youtube_url
-  nico_url
+  niconico_url
   xorder
   --
-  article_id
+  work_id
 }
 
 entity Artwork {
   id
   --
   title
-  comment
+  description
   image
   xorder
   --
-  article_id
+  work_id
 }
 
 entity Comic {
   id
   --
   title
-  comment
+  description
   xorder
   --
-  article_id
+  work_id
 }
 
 entity ComicPage {
   id
   --
   image
-  comment
+  description
   nombre
   --
-  article_id
+  work_id
 }
 
-entity ArticleAuthor {
+entity WorkAuthor {
   id
   --
   role
   --
-  article_id
+  work_id
   author_id
 }
 
@@ -164,19 +176,20 @@ entity AuthorLink {
   author_id
 }
 
-Admin --{ Article
-Article -{ ArticleCategory
-ArticleCategory }-- Category
-Article -{ ArticleLink
-Article --{ Album
+Admin --{ Work
+Work --{ WorkTag
+WorkTag }-- Tag
+Work ---{ Comment
+Work --{ WorkLink
+Work --{ Album
 Album --{ Music
-Article --{ Artwork
-Article --{ Movie
-Article --{ Comic
+Work --{ Artwork
+Work --{ Movie
+Work --{ Comic
 Comic --{ ComicPage
-Author -{ ArticleAuthor
-ArticleAuthor }- Article
+Author -{ WorkAuthor
+WorkAuthor }- Work
 Author --{ AuthorLink
-Article |o- Article
+Work |o- Work
 
 @enduml
