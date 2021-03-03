@@ -35,13 +35,12 @@ entity Work {
   title
   status
   uri
-  released_date
+  release_date
   eye_catch
   description
   content
   like
   --
-  admin_id
   parent_work_id
 }
 
@@ -71,7 +70,7 @@ entity Comment {
   parent_comment_id
 }
 
-entity WorkLink {
+entity WorkSite {
   id
   --
   title
@@ -148,48 +147,49 @@ entity ComicPage {
   work_id
 }
 
-entity WorkAuthor {
+entity WorkCreator {
   id
   --
   role
+  xorder
   --
   work_id
-  author_id
+  creator_id
 }
 
-entity Author {
+entity Creator {
   id
   --
   name
   profile
   icon
-  link
 }
 
-entity AuthorLink {
+entity CreatorSite {
   id
   --
-  site
-  url
   name
+  type
+  url
+  banner
   --
-  author_id
+  creator_id
 }
 
-Admin --{ Work
-Work --{ WorkTag
-WorkTag }-- Tag
-Work ---{ Comment
-Work --{ WorkLink
+Work -{ WorkTag
+WorkTag }- Tag
+Work --{ Comment
+Comment |o- Comment
+Work -{ WorkSite
 Work --{ Album
 Album --{ Music
 Work --{ Artwork
 Work --{ Movie
 Work --{ Comic
 Comic --{ ComicPage
-Author -{ WorkAuthor
-WorkAuthor }- Work
-Author --{ AuthorLink
+Creator -{ WorkCreator
+WorkCreator }- Work
+Creator -{ CreatorSite
 Work |o- Work
 
 @enduml
