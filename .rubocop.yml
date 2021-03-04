@@ -1,0 +1,77 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.0.0
+  TargetRailsVersion: 6.1.3
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+Rails:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - development
+    - test
+
+Layout/LineLength:
+  Enabled: true
+  Max: 200
+Layout/DotPosition:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/AndOr:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/Lambda:
+  EnforcedStyle: literal
+Style/NumericLiterals:
+  MinDigits: 6
+#Style/WordArray:
+#  Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+RSpec/ContextWording:
+  Enabled: false
+RSpec/PredicateMatcher:
+  Enabled: false
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/ExampleLength:
+  Max: 20
+RSpec/NestedGroups:
+  Max: 5
+RSpec/NamedSubject:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
