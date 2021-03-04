@@ -11,9 +11,8 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
-# JavaScript
-gem 'jquery-rails'
-gem 'cocoon'
+# View
+gem 'haml-rails'
 
 # Debug
 gem 'awesome_print'
