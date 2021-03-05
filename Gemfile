@@ -6,7 +6,6 @@ ruby '3.0.0'
 gem 'rails', '~> 6.1.3'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.0'
-gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
@@ -19,9 +18,6 @@ gem 'awesome_print'
 
 # Session
 gem 'devise'
-
-# Data
-gem 'timecop'
 
 # Notification
 gem 'exception_notification'
@@ -45,7 +41,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'pry-doc'
+  gem 'timecop'
 
   # rubocop
   gem 'rubocop', '~> 1.3', require: false
