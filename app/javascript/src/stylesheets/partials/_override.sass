@@ -39,6 +39,11 @@ mark
 .btn
   &:not(.btn-block)
     white-space: nowrap // Safari でラベルが改行されてしまう問題の対処
+  &-primary:not(.disabled)
+    color: $white !important
+  &-outline-primary:not(.disabled)
+    +link-action
+      color: $white !important
   &-warning:not(.disabled)
     color: $white !important
     +link-action
@@ -77,6 +82,8 @@ mark
     @extend .is-invalid
 
 .table
+  th
+    background-color: $gray-lightest
   &.table-bordered
     border: 2px solid $gray-light
     th

@@ -1,0 +1,10 @@
+- model ||= nil
+- errors ||= nil
+
+- if errors.present? || model&.errors.present?
+  .alert.alert-danger{ role: :alert }
+    %ul.mb-0.pl-0
+      - errors&.each do |message|
+        %li= message
+      - model&.errors&.full_messages&.each do |message|
+        %li= message

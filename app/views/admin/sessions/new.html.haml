@@ -1,0 +1,7 @@
+= form_with url: admin_login_path do |f|
+  = f.text_field :screen_name
+  = f.password_field :password
+
+  = f.submit 'ログイン'
+
+= link_to 'ログアウト', admin_logout_path, method: :delete, class: 'btn btn-outline-danger'

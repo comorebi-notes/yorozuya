@@ -1,0 +1,6 @@
+ja:
+  admin:
+    sessions:
+      login: ログインしました。
+      logout: ログアウトしました。
+      failed: IDもしくはパスワードが違います。

@@ -9,15 +9,13 @@ gem 'puma', '~> 5.0'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # View
 gem 'haml-rails'
 
 # Debug
 gem 'awesome_print'
-
-# Session
-gem 'devise'
 
 # Notification
 gem 'exception_notification'

@@ -21,11 +21,11 @@ skinparam ClassBackgroundColor #fff
 skinparam StereotypeCBackgroundColor #fff
 skinparam classFontColor #fff
 
-entity Admin {
+entity User {
   id
   --
   name
-  email
+  screen_name
   password
 }
 

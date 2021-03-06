@@ -1,0 +1,22 @@
+%table.table.table-bordered.table-middle
+  %thead
+    %tr
+      %th= User.human_attribute_name :name
+      %th= User.human_attribute_name :screen_name
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.screen_name
+        %td
+          %ul.list-inline.mb-0
+            %li.list-inline-item
+              = link_to edit_admin_user_path(user), class: 'btn btn-sm btn-outline-primary' do
+                %i.fa.fa-edit.fa-fw
+                = t('.btn.edit')
+            - if current_user != user
+              %li.list-inline-item
+                = link_to admin_user_path(user), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-sm btn-outline-danger' do
+                  %i.fa.fa-ban.fa-fw
+                  = t('.btn.delete')

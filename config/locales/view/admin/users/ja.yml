@@ -1,0 +1,10 @@
+ja:
+  admin:
+    users:
+      index:
+        btn:
+          edit: 編集
+          delete: 削除
+        confirm: 本当に削除しますか？
+      form:
+        ユーザを作成する

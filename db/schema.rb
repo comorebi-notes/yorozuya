@@ -10,6 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_03_06_064947) do
+
+  create_table "users", charset: "utf8", collation: "utf8_unicode_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "screen_name", null: false
+    t.string "password_digest", null: false
+    t.string "remember_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
+  end
 
 end

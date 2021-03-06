@@ -1,0 +1,36 @@
+ja:
+  date:
+    abbr_day_names:
+      - 日
+      - 月
+      - 火
+      - 水
+      - 木
+      - 金
+      - 土
+    formats:
+      default: "%Y/%-m/%-d"
+      year_date_time: "%Y年%-m月%-d日"
+      year_date_time_ja: "%Y年%-m月%-d日 %H:%M"
+      year_date: "%Y/%-m/%-d"
+      year_date_ja: "%Y年%-m月%-d日"
+      year_month: "%Y/%-m"
+      year_month_ja: "%Y年%-m月"
+      date: "%-m/%-d"
+      date_ja: "%-m月%-d日"
+  time:
+    am: 午前
+    pm: 午後
+    formats:
+      default: "%Y年%-m月%-d日 %H時%M分%S秒"
+      year_date_time: "%Y/%-m/%-d %H:%M"
+      year_date_time_ja: "%Y年%-m月%-d日 %H:%M"
+      year_date: "%Y/%-m/%-d"
+      year_date_ja: "%Y年%-m月%-d日"
+      year_month: "%Y/%-m"
+      year_month_ja: "%Y年%-m月"
+      date: "%-m/%-d"
+      date_ja: "%-m月%-d日"
+      date_time: "%-m/%-d %H:%M"
+      date_time_ja: "%-m月%-d日 %H:%M"
+      time: "%H:%M"
