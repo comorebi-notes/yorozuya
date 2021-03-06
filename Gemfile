@@ -42,12 +42,23 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'timecop'
+  gem 'bullet'
 
   # rubocop
   gem 'rubocop', '~> 1.3', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-performance', require: false
+end
+
+group :development do
+  gem 'web-console', '>= 4.1.0'
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen', '~> 3.3'
+  gem 'spring'
+
+  # Data
+  gem 'annotate'
 end
 
 group :test do
@@ -59,17 +70,6 @@ group :test do
 
   # Data
   gem 'factory_bot_rails'
-end
-
-group :development do
-  gem 'web-console', '>= 4.1.0'
-  gem 'rack-mini-profiler', '~> 2.0'
-  gem 'listen', '~> 3.3'
-  gem 'spring'
-
-  # Data
-  gem 'annotate'
-  gem 'bullet'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

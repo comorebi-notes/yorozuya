@@ -1,0 +1,87 @@
+body
+  font-weight: 300
+  min-height: 100vh
+
+small
+  font-weight: inherit
+
+i
+  font-style: normal
+
+input
+  &:-webkit-autofill // Chromeのオートコンプリート対策
+    transition: background-color 50000s linear 50000s
+::placeholder
+  color: $gray-light !important
+
+ul
+  &.pl-0
+    list-style-position: inside
+    padding-left: .24rem !important
+  li
+    > ul
+      list-style-position: inside
+      padding-left: 1.5rem !important
+
+section
+  + section:not(:last-child)
+    margin-top: 1.2rem
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+  font-weight: bolder
+
+img
+  max-width: 100%
+
+mark
+  background-color: $yellow
+
+.btn
+  &:not(.btn-block)
+    white-space: nowrap // Safari でラベルが改行されてしまう問題の対処
+  &-warning:not(.disabled)
+    color: $white !important
+    +link-action
+      color: $white !important
+  &-outline-warning:not(.disabled)
+    +link-action
+      color: $white !important
+
+.badge
+  vertical-align: middle
+  &-warning
+    color: $white
+
+.list-inline-item
+  white-space: nowrap
+
+.navbar
+  min-height: 54px
+  padding: 0.5rem 1rem
+  +media-breakpoint-down(md)
+    .dropdown-menu
+      display: block
+
+.nav-tabs
+  .active
+    font-weight: bolder
+
+.custom-checkbox
+  input, label
+    cursor: pointer
+
+.field_with_errors
+  label, + .form-text
+    @extend .text-danger
+  input, select
+    @extend .is-invalid
+
+.table
+  &.table-bordered
+    border: 2px solid $gray-light
+    th
+      border-bottom: 2px solid $gray-light
+
++media-breakpoint-down(xl)
+  .container
+    max-width: 1000px

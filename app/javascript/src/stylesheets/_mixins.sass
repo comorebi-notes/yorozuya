@@ -1,0 +1,9 @@
+@mixin link-action()
+  &:hover, &:focus, &:active
+    @content
+
+@mixin btn-custom-color($color)
+  background-color: lighten($color, 10%)
+  &:hover, &:active, &:focus, &.focus
+    background-color: $color
+    box-shadow: 0 0 0 .2rem rgba($color, .5)

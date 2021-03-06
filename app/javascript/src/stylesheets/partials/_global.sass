@@ -1,0 +1,86 @@
+.opacity
+  &-6
+    opacity: .6
+
+.text
+  &-xs
+    font-size: $font-size-xs
+  &-sm
+    font-size: $font-size-sm
+  &-md
+    font-size: $font-size-base
+  &-lg
+    font-size: $font-size-h4
+  &-xl
+    font-size: $font-size-h2
+  &-brown
+    color: $brown
+
+.line-height-1
+  line-height: 1 !important
+
+.btn-black
+  +btn-custom-color($black)
+.btn-cyan
+  +btn-custom-color($cyan)
+.btn-orange
+  +btn-custom-color($orange)
+.btn-purple
+  +btn-custom-color($purple)
+.btn-green
+  +btn-custom-color($green)
+.btn-brown
+  +btn-custom-color($brown)
+
+.bg
+  &-brown
+    background-color: $brown
+  &-black
+    background-color: $gray-darkest
+  &-gray-lighter
+    background-color: $gray-lighter
+  &-gray-lightest
+    background-color: $gray-lightest
+
+.table
+  &.table-middle
+    th, td
+      vertical-align: middle
+  tr.inactive
+    th, td
+      background-color: $gray-lighter
+  &-colored
+    .btn
+    &-outline
+      &-primary, &-secondary, &-success, &-danger, &-warning, &-info, &-light, &-dark
+        &:not(:hover):not(:active):not(:focus)
+          background-color: $white
+
+.container-mobile-fluid
+  +media-breakpoint-down(sm)
+    width: 100%
+    padding-left: 0
+    padding-right: 0
+
+.row-gutter
+  &-wide
+    +media-breakpoint-up(md)
+      margin-left: -1.2rem
+      margin-right: -1.2rem
+      > div
+        padding-left: 1.2rem
+        padding-right: 1.2rem
+  &-wider
+    +media-breakpoint-up(md)
+      margin-left: -2rem
+      margin-right: -2rem
+      > div
+        padding-left: 2rem
+        padding-right: 2rem
+  &-widest
+    +media-breakpoint-up(md)
+      margin-left: -2.8rem
+      margin-right: -2.8rem
+      > div
+        padding-left: 2.8rem
+        padding-right: 2.8rem
