@@ -9,31 +9,13 @@ import Turbolinks from 'turbolinks'
 import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
 
-// Libraries
-import $ from 'jquery'
-import 'bootstrap'
-import '@fortawesome/fontawesome-free/js/all'
-
-// Sass
-import '../src/stylesheets/application.sass'
-
-global.$ = $
-global.jQuery = $
-
-require('@nathanvda/cocoon')
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 // Scripts
-const requireContext = require.context('../scripts/commons', true)
+const requireContext = require.context('../scripts/application', true)
 requireContext.keys().forEach(requireContext)
 
-// React
-const componentRequireContext = require.context('../components', true)
-const ReactRailsUJS = require('react_ujs')
-ReactRailsUJS.useContext(componentRequireContext)
-
 // 画像
-require.context('../images', true);
+require.context('../images/application', true);
