@@ -5,7 +5,10 @@
     %meta{ name: :viewport, content: 'width=device-width,initial-scale=1' }
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application', media: :all, 'data-turbolinks-track': :reload
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': :reload
+    = stylesheet_pack_tag 'application', media: :all, 'data-turbolinks-track': :reload
   %body
-    .container= yield
+    = render 'layouts/admin/header'
+    %main.pt-4
+      = render 'shared/notification', notice: notice, alert: alert
+      .container= yield

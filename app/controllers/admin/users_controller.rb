@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to action: :index
+      redirect_to admin_users_path, notice: t('.create.success')
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to action: :index
+      redirect_to admin_users_path, notice: t('.update.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   def destroy
     if current_user == @users
-      flash.now[:danger] = 'ログイン中のユーザは削除できません。'
+      flash.now[:alert] = t('.destroy.alert.current_user')
       render :index
     elsif @user.destroy
       redirect_to action: :index

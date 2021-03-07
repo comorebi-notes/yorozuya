@@ -1,0 +1,7 @@
+ja:
+  admin:
+    sessions:
+      new:
+        title: ログイン
+        btn:
+          create: ログインする

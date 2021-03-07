@@ -1,18 +1,20 @@
 = form_with model: [:admin, user], remote: true do |f|
-  -# = form_error(user)
-
-  = f.label :name
-  = f.text_field :name
-
-  = f.label :screen_name
-  = f.text_field :screen_name
-
-  = f.label :password
-  = f.password_field :password
-
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
-
-  = f.button type: :submit, class: 'btn btn-primary' do
-    %i.fa.fa-plus.fa-fw
-    登録
+  = render 'shared/errors', model: user
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :screen_name
+    = f.text_field :screen_name, class: 'form-control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: 'form-control'
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control'
+  = f.button type: :submit, class: 'btn btn-primary mt-4' do
+    %i.fa.fa-check.fa-fw
+    - if user.new_record?
+      = t('.btn.create')
+    - else
+      = t('.btn.update')

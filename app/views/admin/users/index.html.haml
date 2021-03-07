@@ -1,12 +1,18 @@
+%h1.h2.mb-4= t('.title')
+= link_to new_admin_user_path, class: 'btn btn-outline-primary mb-4' do
+  %i.fa.fa-plus.fa-fw
+  = t('.btn.new')
 %table.table.table-bordered.table-middle
   %thead
     %tr
+      %th ID
       %th= User.human_attribute_name :name
       %th= User.human_attribute_name :screen_name
       %th
   %tbody
     - @users.each do |user|
       %tr
+        %th= user.id
         %td= user.name
         %td= user.screen_name
         %td

@@ -9,7 +9,7 @@ class Admin::SessionsController < Admin::ApplicationController
       login(@user)
       redirect_to admin_root_path, notice: t('.login')
     else
-      flash.now[:danger] = t('.failed')
+      flash.now[:alert] = t('.failed')
       render :new
     end
   end
@@ -29,7 +29,7 @@ class Admin::SessionsController < Admin::ApplicationController
     @user = User.find_by(screen_name: session_params[:screen_name])
     return if @user.present?
 
-    flash.now[:danger] = t('.failed')
+    flash.now[:alert] = t('.failed')
     render :new
   end
 

@@ -1,7 +1,11 @@
+%h1.h2.mb-4= t('.title')
 = form_with url: admin_login_path do |f|
-  = f.text_field :screen_name
-  = f.password_field :password
-
-  = f.submit 'ログイン'
-
-= link_to 'ログアウト', admin_logout_path, method: :delete, class: 'btn btn-outline-danger'
+  .form-group
+    = f.label :screen_name, User.human_attribute_name(:screen_name)
+    = f.text_field :screen_name, class: 'form-control'
+  .form-group
+    = f.label :password, User.human_attribute_name(:password)
+    = f.password_field :password, class: 'form-control'
+  = f.button type: :submit, class: 'btn btn-primary mt-3' do
+    %i.fa.fa-sign-in-alt.fa-fw
+    = t('.btn.create')
