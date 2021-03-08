@@ -1,5 +1,5 @@
 %h1.h2.mb-4= t('.title')
-= link_to new_admin_user_path, class: 'btn btn-outline-primary mb-4' do
+= link_to new_admin_user_path, class: 'btn btn-primary mb-4' do
   %i.fa.fa-plus.fa-fw
   = t('.btn.new')
 %table.table.table-bordered.table-middle
@@ -18,11 +18,11 @@
         %td
           %ul.list-inline.mb-0
             %li.list-inline-item
-              = link_to edit_admin_user_path(user), class: 'btn btn-sm btn-outline-primary' do
+              = link_to edit_admin_user_path(user), class: 'btn btn-sm btn-outline-primary mb-1 mb-sm-0' do
                 %i.fa.fa-edit.fa-fw
                 = t('.btn.edit')
             - if current_user != user
               %li.list-inline-item
-                = link_to admin_user_path(user), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-sm btn-outline-danger' do
+                = link_to admin_user_path(user), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-sm btn-outline-danger mb-sm-0' do
                   %i.fa.fa-ban.fa-fw
                   = t('.btn.delete')

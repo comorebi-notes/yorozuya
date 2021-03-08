@@ -73,6 +73,8 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
     bindex (0.8.1)
+    binding_of_caller (1.0.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -95,6 +97,7 @@ GEM
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
     crass (1.0.6)
+    debug_inspector (1.0.0)
     deep_merge (1.2.1)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
@@ -332,6 +335,7 @@ DEPENDENCIES
   awesome_print
   bcrypt (~> 3.1.7)
   better_errors
+  binding_of_caller
   bootsnap (>= 1.4.4)
   bullet
   byebug

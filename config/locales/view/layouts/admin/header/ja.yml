@@ -2,6 +2,7 @@ ja:
   layouts:
     admin:
       header:
-        open: メニューを開く
         login: ログイン
         logout: ログアウト
+      nav_menu:
+        users: Users

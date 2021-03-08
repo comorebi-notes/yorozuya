@@ -1,13 +1,9 @@
-%nav.navbar.navbar-expand-md.navbar-dark.bg-primary
+.navbar.navbar-expand.navbar-dark.bg-primary
   = link_to 'yorozuya', admin_root_path, class: 'navbar-brand font-weight-bold py-1'
-  = button_tag type: :button, data: { toggle: :collapse, target: '#navbar-menu' }, aria: { controls: 'navbar-menu', expanded: :false, label: t('.open') }, class: 'navbar-toggler px-1' do
-    %span.navbar-toggle-icon
-      %i.fa.fa-bars.fa-lg.fa-fw
-  #navbar-menu.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      %li.nav-item= link_to 'users', admin_users_path, class: 'nav-link'
+  .navbar-collapse
+    .mr-auto
     - if logged_in?
-      .text-white.mr-2
+      .d-none.d-sm-inline.text-white.mr-2
         %i.fa.fa-user.fa-fw.fa-lg
         %span= current_user.name
       = link_to admin_logout_path, method: :delete, class: 'btn btn-sm btn-light text-primary' do
