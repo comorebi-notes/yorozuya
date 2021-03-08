@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'top#index'
+  root 'home#index'
 
   namespace :admin do
-    root 'top#index'
+    root 'home#index'
 
     get    :login,  to: 'sessions#new'
     post   :login,  to: 'sessions#create'

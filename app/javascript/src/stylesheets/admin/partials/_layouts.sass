@@ -13,7 +13,7 @@ body
     background-color: $brown
   > main
     flex-grow: 1
-    padding: 4rem 2rem
+    padding: 2rem 2rem 4rem
 
 .nav-menu
   padding-left: 0
@@ -31,4 +31,17 @@ body
       color: lighten($primary, 10%)
       background-color: rgba($black, .2)
     i
-      margin-right: .4rem
+      margin-right: .6rem
+
+.breadcrumbs
+  margin-bottom: 3rem
+  color: $gray
+  font-size: $font-size-xs
+  font-weight: bold
+  &__separator
+    color: $gray-light
+    margin: 0 .48rem
+    &:before
+      content: ">"
+      display: inline-block
+      transform: scale(.4, .8)

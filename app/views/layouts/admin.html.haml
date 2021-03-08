@@ -14,4 +14,6 @@
       %nav= render 'layouts/admin/nav_menu'
       %main
         = render 'shared/notification', notice: notice, alert: alert
-        .container-fluid= yield
+        .container-fluid
+          = breadcrumbs separator: '<span class="breadcrumbs__separator"></span>', autoroot: false
+          = yield

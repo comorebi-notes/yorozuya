@@ -2,7 +2,7 @@ ja:
   admin:
     users:
       index:
-        title: ユーザ
+        title: ユーザ一覧
         btn:
           new: 作成
           edit: 編集

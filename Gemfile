@@ -13,6 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # View
 gem 'haml-rails'
+gem 'gretel'
 
 # Debug
 gem 'awesome_print'

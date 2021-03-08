@@ -151,6 +151,9 @@ GEM
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gretel (4.2.0)
+      actionview (>= 5.1, < 7.0)
+      railties (>= 5.1, < 7.0)
     haml (5.2.1)
       temple (>= 0.8.0)
       tilt
@@ -344,6 +347,7 @@ DEPENDENCIES
   dotenv-rails
   exception_notification
   factory_bot_rails
+  gretel
   haml-rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
