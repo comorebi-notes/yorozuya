@@ -1,5 +1,6 @@
 class Admin::SessionsController < Admin::ApplicationController
   skip_before_action :require_login!, only: %i[new create]
+  before_action :check_current_user, only: %i[new create]
   before_action :set_user, only: :create
 
   def new; end
@@ -23,6 +24,10 @@ class Admin::SessionsController < Admin::ApplicationController
 
   def session_params
     params.permit(:screen_name, :password)
+  end
+
+  def check_current_user
+    redirect_to admin_root_path, notice: t('.logged_in') if current_user.present?
   end
 
   def set_user

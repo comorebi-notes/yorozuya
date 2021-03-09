@@ -94,3 +94,13 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def login(user = create(:user), password = 'P@ssw0rd')
+  visit admin_login_path
+  within 'main' do
+    fill_in 'ログインID', with: user.screen_name
+    fill_in 'パスワード', with: password
+    click_button 'ログインする'
+  end
+  click_button 'ログインしました。'
+end

@@ -4,3 +4,4 @@ ja:
       login: ログインしました。
       logout: ログアウトしました。
       failed: IDもしくはパスワードが違います。
+      logged_in: すでにログインしています。

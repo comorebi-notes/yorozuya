@@ -33,7 +33,7 @@ class Admin::UsersController < Admin::ApplicationController
       flash.now[:alert] = t('.destroy.alert.current_user')
       render :index
     elsif @user.destroy
-      redirect_to action: :index
+      redirect_to admin_users_path, notice: t('.destroy.success')
     else
       render :index
     end

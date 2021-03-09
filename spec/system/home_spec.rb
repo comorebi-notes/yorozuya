@@ -5,5 +5,5 @@ describe '/', type: :system do
 
   before { visit root_path }
 
-  it { is_expected.to have_current_path root_path }
+  it { is_expected.to have_content 'Hello World!' }
 end

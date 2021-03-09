@@ -21,5 +21,6 @@ ja:
       update:
         success: ユーザを更新しました。
       destroy:
+        success: ユーザを削除しました。
         alert:
           current_user: ログイン中のユーザは削除できません。
