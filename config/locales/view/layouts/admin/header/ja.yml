@@ -4,5 +4,3 @@ ja:
       header:
         login: ログイン
         logout: ログアウト
-      nav_menu:
-        users: ユーザ

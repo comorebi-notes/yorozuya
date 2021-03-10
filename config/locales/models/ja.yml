@@ -1,10 +1,15 @@
 ja:
   activerecord:
     models:
-      user: ユーザ
+      user: 管理者
+      creator: クリエイター
     attributes:
       user:
         name: 名前
         screen_name: ログインID
         password: パスワード
         password_confirmation: パスワード (確認)
+      creator:
+        name: 名前
+        profile: プロフィール
+        icon: アイコン

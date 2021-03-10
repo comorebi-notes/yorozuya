@@ -39,18 +39,18 @@ describe '/admin/users', type: :system do
 
     before { visit subject_path }
 
-    it 'ログイン中のユーザの場合には表示されないこと' do
+    it 'ログイン中の管理者の場合には表示されないこと' do
       expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(3)')).not_to have_link '削除'
     end
 
-    it 'ログイン中以外のユーザの場合には表示されること' do
+    it 'ログイン中以外の管理者の場合には表示されること' do
       expect(find('main table tbody tr:nth-of-type(2) td:nth-of-type(3)')).to have_link '削除', href: admin_user_path(another_user)
     end
 
     it '削除できること' do
       page.accept_confirm { click_link '削除' }
       aggregate_failures do
-        expect(page).to have_content 'ユーザを削除しました。'
+        expect(page).to have_content '管理者を削除しました'
         expect(page).not_to have_content 'Another user'
       end
     end

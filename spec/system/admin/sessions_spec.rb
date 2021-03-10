@@ -20,7 +20,7 @@ describe '/admin/login', type: :system do
         it do
           aggregate_failures do
             expect(page).to have_current_path admin_root_path
-            expect(page).to have_content 'ログインしました。'
+            expect(page).to have_content 'ログインしました'
             expect(find('.navbar')).to have_content 'comorebi notes'
           end
         end
@@ -37,7 +37,7 @@ describe '/admin/login', type: :system do
         it do
           aggregate_failures do
             expect(page).to have_current_path admin_login_path
-            expect(page).to have_content 'IDもしくはパスワードが違います。'
+            expect(page).to have_content 'IDもしくはパスワードが違います'
             expect(find('.navbar')).not_to have_content 'comorebi notes'
           end
         end
@@ -53,7 +53,7 @@ describe '/admin/login', type: :system do
       it do
         aggregate_failures do
           expect(page).to have_current_path admin_root_path
-          expect(page).to have_content 'すでにログインしています。'
+          expect(page).to have_content 'すでにログインしています'
           expect(find('.navbar')).to have_content 'comorebi notes'
         end
       end
@@ -69,7 +69,7 @@ describe '/admin/login', type: :system do
     it do
       aggregate_failures do
         expect(page).to have_current_path admin_login_path
-        expect(page).to have_content 'ログアウトしました。'
+        expect(page).to have_content 'ログアウトしました'
         expect(find('.navbar')).not_to have_content 'comorebi notes'
       end
     end

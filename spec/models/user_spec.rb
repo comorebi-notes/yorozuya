@@ -21,7 +21,7 @@ describe User, type: :model do
     subject { user }
 
     context 'valid' do
-      let(:user) { User.new(name: 'comorebi notes', screen_name: 'login_id', password: 'P@ssw0rd', password_confirmation: 'P@ssw0rd') }
+      let(:user) { build :user, name: 'comorebi notes', screen_name: 'login_id', password: 'P@ssw0rd', password_confirmation: 'P@ssw0rd' }
 
       it { is_expected.to be_valid }
     end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '/admin/users/new', type: :system do
+describe '/admin/users/:id/edit', type: :system do
   subject { page }
 
   let(:subject_path) { edit_admin_user_path(user) }
@@ -25,13 +25,13 @@ describe '/admin/users/new', type: :system do
       fill_in 'ログインID', with: 'akane_buzz'
       fill_in 'パスワード', with: 'P@ssw0rd'
       fill_in 'パスワード (確認)', with: 'P@ssw0rd'
-      click_button 'ユーザを更新する'
+      click_button '管理者を更新する'
     end
 
     it do
       aggregate_failures do
         expect(page).to have_current_path admin_users_path
-        expect(page).to have_content 'ユーザを更新しました。'
+        expect(page).to have_content '管理者を更新しました'
         expect(page).to have_content '穂村あかね'
         expect(page).to have_content 'akane_buzz'
       end

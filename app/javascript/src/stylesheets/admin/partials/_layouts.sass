@@ -10,6 +10,7 @@ body
   display: flex
   > nav
     width: 280px
+    min-width: 280px
     background-color: $brown
   > main
     flex-grow: 1
@@ -23,15 +24,15 @@ body
     padding: 1rem
     text-decoration: none
     font-weight: bold
-    color: $white
+    color: rgba($white, .8)
     +link-action
       color: lighten($primary, 10%)
       background-color: rgba($black, .2)
     &.active
       color: lighten($primary, 10%)
       background-color: rgba($black, .2)
-    i
-      margin-right: .6rem
+    svg
+      @extend .mr-1
 
 .breadcrumbs
   margin-bottom: 3rem
@@ -45,3 +46,9 @@ body
       content: ">"
       display: inline-block
       transform: scale(.4, .8)
+
+.page-title
+  font-size: $h2-font-size
+  margin-bottom: 1.6rem
+.btn-area
+  margin-bottom: 1.6rem

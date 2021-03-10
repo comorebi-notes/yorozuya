@@ -32,11 +32,17 @@ module Yorozuya
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
-
     # form_with のデフォルトを ajax 化
     # config.action_view.form_with_generates_remote_forms = true
+
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.template_engine false
+      g.test_framework :rspec, view_specs: false, helper_specs: false, fixture: true
+      g.fixture_replacement :factory_bot, dir: 'spec/support/factories'
+    end
 
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     config.i18n.default_locale = :ja

@@ -2,19 +2,19 @@
   = render 'shared/errors', model: user
   .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name, class: 'form-control', required: true
   .form-group
     = f.label :screen_name
-    = f.text_field :screen_name, class: 'form-control'
+    = f.text_field :screen_name, class: 'form-control', required: true
   .form-group
     = f.label :password
-    = f.password_field :password, class: 'form-control'
+    = f.password_field :password, class: 'form-control', required: user.new_record?
   .form-group
     = f.label :password_confirmation
-    = f.password_field :password_confirmation, class: 'form-control'
+    = f.password_field :password_confirmation, class: 'form-control', required: user.new_record?
   = f.button type: :submit, class: 'btn btn-primary mt-3' do
     %i.fa.fa-check.fa-fw
     - if user.new_record?
-      = t('.btn.create')
+      = t('admin.btn.create', model: User.model_name.human)
     - else
-      = t('.btn.update')
+      = t('admin.btn.update', model: User.model_name.human)

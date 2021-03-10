@@ -14,13 +14,13 @@ describe '/admin/users/new', type: :system do
       fill_in 'ログインID', with: 'akane_buzz'
       fill_in 'パスワード', with: 'P@ssw0rd'
       fill_in 'パスワード (確認)', with: 'P@ssw0rd'
-      click_button 'ユーザを作成する'
+      click_button '管理者を作成する'
     end
 
     it do
       aggregate_failures do
         expect(page).to have_current_path admin_users_path
-        expect(page).to have_content 'ユーザを作成しました。'
+        expect(page).to have_content '管理者を作成しました'
         expect(page).to have_content '穂村あかね'
         expect(page).to have_content 'akane_buzz'
       end
@@ -30,7 +30,7 @@ describe '/admin/users/new', type: :system do
   context '失敗する場合' do
     before do
       visit subject_path
-      click_button 'ユーザを作成する'
+      force_submit!
     end
 
     it do

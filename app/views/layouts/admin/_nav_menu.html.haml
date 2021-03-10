@@ -1,5 +1,8 @@
 %ul.nav-menu
   %li
+    = link_to admin_creators_path, class: nav_menu_classname(admin_creators_path) do
+      %i.fa.fa-user.fa-lg.fa-fw
+      = Creator.model_name.human
     = link_to admin_users_path, class: nav_menu_classname(admin_users_path) do
-      %i.fa.fa-user.fa-fw
-      = t('.users')
+      %i.fa.fa-user-circle.fa-lg.fa-fw
+      = User.model_name.human

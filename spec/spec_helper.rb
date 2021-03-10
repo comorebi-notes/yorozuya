@@ -102,5 +102,11 @@ def login(user = create(:user), password = 'P@ssw0rd')
     fill_in 'パスワード', with: password
     click_button 'ログインする'
   end
-  click_button 'ログインしました。'
+  click_button 'ログインしました'
 end
+
+def force_submit!(form_selector = 'main form')
+  page.execute_script "document.querySelector('#{form_selector}').submit()"
+end
+
+def sample_icon = Rails.root.join('spec/support/files/icon.png')

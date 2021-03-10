@@ -1,14 +1,14 @@
 - if notice.present?
   .notification.notification-success.collapse.show#notification-success
-    = button_tag type: :button, class: 'btn btn-sm btn-link text-white text-wrap font-weight-bolder',
+    = button_tag type: :button, class: 'btn btn-sm btn-link text-white text-wrap font-weight-bold',
       data: { toggle: :collapse, target: '#notification-success' },
       aria: { expanded: true, controls: 'notification-success' } do
       = notice
-      %i.fa.fa-times
+      %i.fa.fa-times.ml-1
 - elsif alert.present?
   .notification.notification-danger.collapse.show#notification-danger
-    = button_tag type: :button, class: 'btn btn-sm btn-link text-white text-wrap font-weight-bolder',
+    = button_tag type: :button, class: 'btn btn-sm btn-link text-white text-wrap font-weight-bold',
       data: { toggle: :collapse, target: '#notification-danger' },
       aria: { expanded: true, controls: 'notification-danger' } do
       = alert
-      %i.fa.fa-times
+      %i.fa.fa-times.ml-1

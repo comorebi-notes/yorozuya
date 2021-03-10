@@ -11,6 +11,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
+# ActiveStorage
+gem 'image_processing', '~> 1.2'
+
 # View
 gem 'haml-rails'
 gem 'gretel'
@@ -24,9 +27,6 @@ gem 'slack-notifier'
 
 # Setting
 gem 'config'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -1,7 +1,7 @@
 ja:
   admin:
     sessions:
-      login: ログインしました。
-      logout: ログアウトしました。
-      failed: IDもしくはパスワードが違います。
-      logged_in: すでにログインしています。
+      login: ログインしました
+      logout: ログアウトしました
+      failed: IDもしくはパスワードが違います
+      logged_in: すでにログインしています

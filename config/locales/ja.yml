@@ -34,3 +34,23 @@ ja:
       date_time: "%-m/%-d %H:%M"
       date_time_ja: "%-m月%-d日 %H:%M"
       time: "%H:%M"
+  admin:
+    flash:
+      create:
+        success: "%{model}を作成しました"
+      update:
+        success: "%{model}を更新しました"
+      destroy:
+        success: "%{model}を削除しました"
+        failure: "%{model}の削除に失敗しました"
+    btn:
+      new: 作成
+      create: "%{model}を作成する"
+      edit: 編集
+      update: "%{model}を更新する"
+      destroy: 削除
+      destroy_confirm: 本当に削除しますか？
+    page_title:
+      index: "%{model} 一覧"
+      new: "%{model} 作成"
+      edit: "%{model} 編集"

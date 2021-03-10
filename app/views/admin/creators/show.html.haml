@@ -1,0 +1,23 @@
+- breadcrumb :admin_creator, @creator
+%h1.page-title= @creator.name
+%ul.list-inline.btn-area
+  %li.list-inline-item
+    = link_to edit_admin_creator_path(@creator), class: 'btn btn-primary' do
+      %i.fa.fa-edit.fa-fw
+      = t('admin.btn.edit')
+  %li.list-inline-item
+    = link_to admin_creator_path(@creator), method: :delete, data: { confirm: t('admin.btn.destroy_confirm') }, class: 'btn btn-outline-danger' do
+      %i.fa.fa-ban.fa-fw
+      = t('admin.btn.destroy')
+- if @creator.icon.present?
+  = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), size: '128x128', alt: t('.icon', name: @creator.name), class: 'rounded mb-4'
+%table.table.table-bordered.table-middle
+  %tr
+    %th ID
+    %td= @creator.id
+  %tr
+    %th= Creator.human_attribute_name :name
+    %td= @creator.name
+  %tr
+    %th= Creator.human_attribute_name :profile
+    %td= hbr @creator.profile

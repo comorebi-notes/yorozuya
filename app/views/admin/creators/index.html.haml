@@ -1,0 +1,36 @@
+- breadcrumb :admin_creators
+%h1.page-title= t('admin.page_title.index', model: Creator.model_name.human)
+.btn-area
+  = link_to new_admin_creator_path, class: 'btn btn-primary' do
+    %i.fa.fa-plus.fa-fw
+    = t('admin.btn.new')
+%table.table.table-bordered.table-middle
+  %thead
+    %tr
+      %th ID
+      %th= Creator.human_attribute_name :icon
+      %th= Creator.human_attribute_name :name
+      %th= Creator.human_attribute_name :profile
+      %th
+  %tbody
+    - Creator.order(:id).each do |creator|
+      %tr
+        %th= creator.id
+        %td
+          = link_to admin_creator_path(creator) do
+            - if creator.icon.present?
+              = image_tag creator.icon.variant(resize: Creator::ICON_SIZES[:thumb]), size: '64x64', alt: t('.icon', name: creator.name), class: 'rounded'
+            - else
+              %span.font-weight-bolder.text-sm NO ICON
+        %td= creator.name
+        %td= hbr creator.profile
+        %td.text-nowrap
+          %ul.list-inline.mb-0
+            %li.list-inline-item
+              = link_to edit_admin_creator_path(creator), class: 'btn btn-sm btn-outline-primary mb-1 mb-sm-0' do
+                %i.fa.fa-edit.fa-fw
+                = t('admin.btn.edit')
+            %li.list-inline-item
+              = link_to admin_creator_path(creator), method: :delete, data: { confirm: t('admin.btn.destroy_confirm') }, class: 'btn btn-sm btn-outline-danger mb-sm-0' do
+                %i.fa.fa-ban.fa-fw
+                = t('admin.btn.destroy')

@@ -1,0 +1,7 @@
+ja:
+  admin:
+    creators:
+      index:
+        icon: "%{name}のアイコン"
+      show:
+        icon: "%{name}のアイコン"

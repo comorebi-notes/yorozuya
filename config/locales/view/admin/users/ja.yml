@@ -1,26 +1,6 @@
 ja:
   admin:
     users:
-      index:
-        title: ユーザ一覧
-        btn:
-          new: 作成
-          edit: 編集
-          delete: 削除
-        confirm: 本当に削除しますか？
-      new:
-        title: ユーザ作成
-      edit:
-        title: ユーザ編集
-      form:
-        btn:
-          create: ユーザを作成する
-          update: ユーザを更新する
-      create:
-        success: ユーザを作成しました。
-      update:
-        success: ユーザを更新しました。
       destroy:
-        success: ユーザを削除しました。
         alert:
-          current_user: ログイン中のユーザは削除できません。
+          current_user: ログイン中の管理者は削除できません。

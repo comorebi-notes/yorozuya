@@ -1,3 +1,3 @@
 - breadcrumb :edit_admin_user, @user
-%h1.h2.mb-4= t('.title')
+%h1.page-title= t('admin.page_title.edit', model: User.model_name.human)
 = render 'form', user: @user

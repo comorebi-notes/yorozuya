@@ -1,0 +1,20 @@
+= form_with model: [:admin, creator], remote: true do |f|
+  = render 'shared/errors', model: creator
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', required: true
+  .form-group
+    = f.label :profile
+    = f.text_area :profile, class: 'form-control js-dynamic-textarea', rows: 4
+  .form-group
+    %legend.text-md= Creator.human_attribute_name :icon
+    .custom-file
+      = f.file_field :icon, class: 'custom-file-input', lang: :ja
+      = f.label :icon, class: 'custom-file-label custom-file-label-reverse' do
+        %span
+  = f.button type: :submit, class: 'btn btn-primary mt-3' do
+    %i.fa.fa-check.fa-fw
+    - if creator.new_record?
+      = t('admin.btn.create', model: Creator.model_name.human)
+    - else
+      = t('admin.btn.update', model: Creator.model_name.human)
