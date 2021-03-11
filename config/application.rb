@@ -48,5 +48,8 @@ module Yorozuya
     config.i18n.default_locale = :ja
     config.i18n.available_locales = %i[ja en]
     config.time_zone = 'Tokyo'
+
+    # ヘルパーを名前空間で制御
+    config.action_controller.include_all_helpers = false
   end
 end
