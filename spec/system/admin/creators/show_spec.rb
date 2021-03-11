@@ -4,7 +4,7 @@ describe '/admin/creators/:id', type: :system do
   subject { page }
 
   let(:subject_path) { admin_creator_path(creator) }
-  let(:creator) { create :creator, name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.' }
+  let(:creator) { create :creator, name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.', icon: Rack::Test::UploadedFile.new('spec/support/files/icon.png', 'image/png') }
 
   before do
     login
@@ -15,6 +15,7 @@ describe '/admin/creators/:id', type: :system do
     it '表示が正しいこと' do
       aggregate_failures do
         expect(page).to have_content "ID #{creator.id}"
+        expect(page).to have_selector '.icon--default'
         expect(page).to have_content '名前 ケロ'
         expect(page).to have_content 'プロフィール yorozu no mono wo tsukurikeri.'
       end

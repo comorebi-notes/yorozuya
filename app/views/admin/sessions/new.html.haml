@@ -6,6 +6,6 @@
   .form-group
     = f.label :password, User.human_attribute_name(:password)
     = f.password_field :password, class: 'form-control'
-  = f.button type: :submit, class: 'btn btn-primary mt-3' do
+  = f.button type: :submit, class: 'btn btn-primary' do
     %i.fa.fa-sign-in-alt.fa-fw
     = t('.btn.create')

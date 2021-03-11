@@ -9,9 +9,10 @@
     = link_to admin_creator_path(@creator), method: :delete, data: { confirm: t('admin.btn.destroy_confirm') }, class: 'btn btn-outline-danger' do
       %i.fa.fa-ban.fa-fw
       = t('admin.btn.destroy')
-- if @creator.icon.present?
-  = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), size: '128x128', alt: t('.icon', name: @creator.name), class: 'rounded mb-4'
-%table.table.table-bordered.table-middle
+- if @creator.icon.attached?
+  = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), alt: t('admin.label.icon', name: @creator.name), class: 'icon--default mb-4'
+%table.table.table-bordered.table-th-min.table-middle
+  %colgroup
   %tr
     %th ID
     %td= @creator.id

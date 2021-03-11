@@ -1,7 +1,5 @@
 ja:
   admin:
     creators:
-      index:
-        icon: "%{name}のアイコン"
-      show:
-        icon: "%{name}のアイコン"
+      form:
+        icon_destroy: 現在のアイコンを削除する

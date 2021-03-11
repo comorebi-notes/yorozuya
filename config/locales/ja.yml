@@ -54,3 +54,5 @@ ja:
       index: "%{model} 一覧"
       new: "%{model} 作成"
       edit: "%{model} 編集"
+    label:
+      icon: "%{name}のアイコン"

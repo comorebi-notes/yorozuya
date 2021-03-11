@@ -4,7 +4,7 @@ describe '/admin/creators', type: :system do
   subject { page }
 
   let(:subject_path) { admin_creators_path }
-  let!(:creator) { create :creator, name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.' }
+  let!(:creator) { create :creator, name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.', icon: Rack::Test::UploadedFile.new('spec/support/files/icon.png', 'image/png') }
 
   before { login }
 
@@ -23,7 +23,7 @@ describe '/admin/creators', type: :system do
     it '表示が正しいこと' do
       aggregate_failures do
         expect(find('main table tbody tr:nth-of-type(1) th:nth-of-type(1)')).to have_content creator.id
-        expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(1)')).to have_selector 'img'
+        expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(1)')).to have_selector '.icon--thumb'
         expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(2)')).to have_content 'ケロ'
         expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(3)')).to have_content 'yorozu no mono wo tsukurikeri.'
       end

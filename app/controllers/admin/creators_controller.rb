@@ -20,6 +20,7 @@ class Admin::CreatorsController < Admin::ApplicationController
 
   def update
     if @creator.update(creator_params)
+      @creator.icon.purge if params[:icon_destroy]
       redirect_to admin_creator_path(@creator), notice: t('admin.flash.update.success', model: Creator.model_name.human)
     else
       render :edit

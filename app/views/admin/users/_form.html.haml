@@ -12,7 +12,7 @@
   .form-group
     = f.label :password_confirmation
     = f.password_field :password_confirmation, class: 'form-control', required: user.new_record?
-  = f.button type: :submit, class: 'btn btn-primary mt-3' do
+  = f.button type: :submit, class: 'btn btn-primary' do
     %i.fa.fa-check.fa-fw
     - if user.new_record?
       = t('admin.btn.create', model: User.model_name.human)

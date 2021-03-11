@@ -12,7 +12,12 @@
       = f.file_field :icon, class: 'custom-file-input', lang: :ja
       = f.label :icon, class: 'custom-file-label custom-file-label-reverse' do
         %span
-  = f.button type: :submit, class: 'btn btn-primary mt-3' do
+    - if creator.icon.attached?
+      = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), alt: t('admin.label.icon', name: @creator.name), class: 'icon--default mt-2 mb-1'
+      .custom-control.custom-checkbox
+        = check_box_tag :icon_destroy, true, false, class: 'custom-control-input'
+        = label_tag :icon_destroy, t('.icon_destroy'), class: 'custom-control-label'
+  = f.button type: :submit, class: 'btn btn-primary' do
     %i.fa.fa-check.fa-fw
     - if creator.new_record?
       = t('admin.btn.create', model: Creator.model_name.human)
