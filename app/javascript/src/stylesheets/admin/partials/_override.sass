@@ -15,13 +15,7 @@ input
   color: $gray-light !important
 
 ul
-  &.pl-0
-    list-style-position: inside
-    padding-left: .24rem !important
-  li
-    > ul
-      list-style-position: inside
-      padding-left: 1.5rem !important
+  padding-left: 18px
 
 section
   + section:not(:last-child)
@@ -39,14 +33,14 @@ mark
   &-primary:not(.disabled)
     color: $white !important
   &-outline-primary:not(.disabled)
-    +link-action
+    &:hover, &:active
       color: $white !important
   &-warning:not(.disabled)
     color: $white !important
-    +link-action
+    &:hover, &:active
       color: $white !important
   &-outline-warning:not(.disabled)
-    +link-action
+    &:hover, &:active
       color: $white !important
 
 .badge
@@ -73,6 +67,7 @@ mark
     cursor: pointer
 
 .form-group
+  margin-bottom: 1.2rem
   & + input[type="submit"], & + button[type="submit"]
     margin-top: 1.2rem
 

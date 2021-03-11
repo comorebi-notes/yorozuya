@@ -1,5 +1,7 @@
 class Admin::CreatorsController < Admin::ApplicationController
+  before_action :set_new_creator, only: %i[new]
   before_action :set_creator, only: %i[show edit update destroy]
+  before_action :build_creator_sites, only: %i[new edit]
 
   def index; end
 
@@ -12,6 +14,7 @@ class Admin::CreatorsController < Admin::ApplicationController
     if @creator.save
       redirect_to admin_creator_path(@creator), notice: t('admin.flash.create.success', model: Creator.model_name.human)
     else
+      build_creator_sites if @creator.creator_sites.length.zero?
       render :new
     end
   end
@@ -23,6 +26,7 @@ class Admin::CreatorsController < Admin::ApplicationController
       @creator.icon.purge if params[:icon_destroy]
       redirect_to admin_creator_path(@creator), notice: t('admin.flash.update.success', model: Creator.model_name.human)
     else
+      build_creator_sites if @creator.creator_sites.length.zero?
       render :edit
     end
   end
@@ -38,10 +42,18 @@ class Admin::CreatorsController < Admin::ApplicationController
   private
 
   def creator_params
-    params.require(:creator).permit(:name, :profile, :icon)
+    params.require(:creator).permit(:name, :profile, :icon, creator_sites_attributes: %i[id name kind url _destroy])
+  end
+
+  def set_new_creator
+    @creator = Creator.new
   end
 
   def set_creator
     @creator = Creator.find(params[:id])
+  end
+
+  def build_creator_sites
+    @creator.creator_sites.build(kind: nil)
   end
 end

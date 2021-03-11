@@ -3,6 +3,7 @@ ja:
     models:
       user: 管理者
       creator: クリエイター
+      creator_site: リンク
     attributes:
       user:
         name: 名前
@@ -13,3 +14,23 @@ ja:
         name: 名前
         profile: プロフィール
         icon: アイコン
+        creator_sites: リンク
+      creator/creator_sites:
+        name: リンクの名前
+        kind: リンクの種類
+        url: リンクのURL
+      creator_site:
+        name: 名前
+        kind: 種類
+        url: URL
+      creator_site/kind:
+        general: 一般サイト
+        email: メールアドレス
+        twitter: Twitter
+        facebook: Facebook
+        instagram: Instagram
+        youtube: YouTube
+        niconico: ニコニコ動画
+        soundcloud: SoundCloud
+        pixiv: Pixiv
+        homepage: ホームページ

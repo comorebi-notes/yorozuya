@@ -169,9 +169,8 @@ entity CreatorSite {
   id
   --
   name
-  type
+  kind
   url
-  banner
   --
   creator_id
 }

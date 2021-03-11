@@ -17,6 +17,7 @@ gem 'image_processing', '~> 1.2'
 # View
 gem 'haml-rails'
 gem 'gretel'
+gem 'cocoon'
 
 # Debug
 gem 'awesome_print'

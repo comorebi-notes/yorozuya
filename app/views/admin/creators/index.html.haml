@@ -11,9 +11,10 @@
       %th= Creator.human_attribute_name :icon
       %th= Creator.human_attribute_name :name
       %th= Creator.human_attribute_name :profile
+      %th= Creator.human_attribute_name :creator_sites
       %th
   %tbody
-    - Creator.includes(icon_attachment: :blob).order(:id).each do |creator|
+    - Creator.includes(:creator_sites, icon_attachment: :blob).order(:id).each do |creator|
       %tr
         %th= creator.id
         %td
@@ -24,6 +25,14 @@
               %span.font-weight-bolder.text-sm NO ICON
         %td= creator.name
         %td= hbr creator.profile
+        %td
+          - if creator.creator_sites.present?
+            %ul.mb-0
+              - creator.creator_sites.each do |creator_site|
+                %li
+                  = link_to creator_site.url, target: :_blank do
+                    = creator_site.name
+                    %i.fa.fa-external-link-alt.fa-xs.fa-fw
         %td.text-nowrap
           %ul.list-inline.mb-0
             %li.list-inline-item

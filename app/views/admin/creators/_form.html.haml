@@ -17,6 +17,20 @@
       .custom-control.custom-checkbox
         = check_box_tag :icon_destroy, true, false, class: 'custom-control-input'
         = label_tag :icon_destroy, t('.icon_destroy'), class: 'custom-control-label'
+  .form-group
+    %legend.text-md= Creator.human_attribute_name :creator_sites
+    .card.card-body
+      .form-row.text-xs.d-none.d-sm-flex.mb-1
+        .col-3= CreatorSite.human_attribute_name :name
+        .col-2= CreatorSite.human_attribute_name :kind
+        .col-7= CreatorSite.human_attribute_name :url
+      = f.fields_for :creator_sites do |creator_site|
+        = render 'creator_site_fields', f: creator_site
+      .mt-1
+        = link_to_add_association f, :creator_sites, class: 'btn btn-outline-primary' do
+          %i.fa.fa-plus.fa-fw
+          = t('.creator_sites.add')
+
   = f.button type: :submit, class: 'btn btn-primary' do
     %i.fa.fa-check.fa-fw
     - if creator.new_record?

@@ -22,3 +22,12 @@
   %tr
     %th= Creator.human_attribute_name :profile
     %td= hbr @creator.profile
+  %tr
+    %th= Creator.human_attribute_name :creator_sites
+    %td
+      %ul.mb-0
+        - @creator.creator_sites.each do |creator_site|
+          %li
+            = link_to creator_site.url, target: :_blank do
+              = creator_site.name
+              %i.fa.fa-external-link-alt.fa-xs.fa-fw

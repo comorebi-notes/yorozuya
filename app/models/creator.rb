@@ -9,9 +9,13 @@
 #  updated_at :datetime         not null
 #
 class Creator < ApplicationRecord
+  ICON_SIZES = { large: '800x800', default: '256x256', thumb: '128x128' }.freeze
+
   has_one_attached :icon
 
-  ICON_SIZES = { large: '800x800', default: '256x256', thumb: '128x128' }.freeze
+  has_many :creator_sites, dependent: :destroy
+
+  accepts_nested_attributes_for :creator_sites, reject_if: :all_blank, allow_destroy: true
 
   validates :name, presence: true
 end

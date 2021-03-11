@@ -3,3 +3,5 @@ ja:
     creators:
       form:
         icon_destroy: 現在のアイコンを削除する
+        creator_sites:
+          add: リンクを追加する
