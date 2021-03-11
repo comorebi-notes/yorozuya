@@ -66,6 +66,10 @@ body
 
 .icon
   @extend .rounded
+  a &
+    transition: border-radius $animation-duration ease-in-out
+    +link-action
+      border-radius: 50% !important
   &--default
     @extend .icon
     width: 128px
