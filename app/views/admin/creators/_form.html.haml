@@ -20,10 +20,11 @@
   .form-group
     %legend.text-md= Creator.human_attribute_name :creator_sites
     .card.card-body
-      .form-row.text-xs.d-none.d-sm-flex.mb-1
-        .col-3= CreatorSite.human_attribute_name :name
-        .col-2= CreatorSite.human_attribute_name :kind
-        .col-7= CreatorSite.human_attribute_name :url
+      %legend.mb-1
+        .form-row.text-sm.d-none.d-sm-flex
+          .col-3= CreatorSite.human_attribute_name :name
+          .col-2= CreatorSite.human_attribute_name :kind
+          .col-7= CreatorSite.human_attribute_name :url
       = f.fields_for :creator_sites do |creator_site|
         = render 'creator_site_fields', f: creator_site
       .mt-1

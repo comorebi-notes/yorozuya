@@ -66,7 +66,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before :each, type: :system do
-    driven_by :selenium_chrome_headless, screen_size: [1600, 1200]
+    driven_by :selenium, using: :headless_chrome, screen_size: [1600, 1200]
   end
 
   config.after do

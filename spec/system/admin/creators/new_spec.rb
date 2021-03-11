@@ -10,9 +10,16 @@ describe '/admin/creators/new', type: :system do
   context '成功する場合' do
     before do
       visit subject_path
-      fill_in '名前', with: '穂村あかね'
+      within 'form > div:first-of-type' do
+        fill_in '名前', with: '穂村あかね'
+      end
       fill_in 'プロフィール', with: '教えてポヨよん'
       attach_file :creator_icon, sample_icon, make_visible: true
+      within '.nested-fields' do
+        fill_in '名前', with: 'ホームページ'
+        select 'ホームページ', from: '種類'
+        fill_in 'URL', with: 'https://example.com'
+      end
       click_button 'クリエイターを作成する'
     end
 
@@ -22,9 +29,11 @@ describe '/admin/creators/new', type: :system do
       aggregate_failures do
         expect(page).to have_current_path admin_creator_path(creator)
         expect(page).to have_content 'クリエイターを作成しました'
-        expect(page).to have_selector '.btn-area + img'
+        expect(page).to have_selector '.icon--default'
         expect(page).to have_content '名前 穂村あかね'
         expect(page).to have_content 'プロフィール 教えてポヨよん'
+        expect(page).to have_content "リンク\nホームページ"
+        expect(page).to have_link 'ホームページ', href: 'https://example.com'
       end
     end
   end

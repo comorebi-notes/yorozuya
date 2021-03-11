@@ -110,3 +110,5 @@ def force_submit!(form_selector = 'main form')
 end
 
 def sample_icon = Rails.root.join('spec/support/files/icon.png')
+
+def uploaded_sample_icon = Rack::Test::UploadedFile.new('spec/support/files/icon.png', 'image/png')

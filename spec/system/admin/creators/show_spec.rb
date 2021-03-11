@@ -4,7 +4,11 @@ describe '/admin/creators/:id', type: :system do
   subject { page }
 
   let(:subject_path) { admin_creator_path(creator) }
-  let(:creator) { create :creator, name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.', icon: Rack::Test::UploadedFile.new('spec/support/files/icon.png', 'image/png') }
+  let!(:creator) do
+    create :creator,
+           name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.', icon: uploaded_sample_icon,
+           creator_sites: [build(:creator_site, name: 'ホームページ', kind: :homepage, url: 'https://example.com')]
+  end
 
   before do
     login
@@ -18,6 +22,8 @@ describe '/admin/creators/:id', type: :system do
         expect(page).to have_selector '.icon--default'
         expect(page).to have_content '名前 ケロ'
         expect(page).to have_content 'プロフィール yorozu no mono wo tsukurikeri.'
+        expect(page).to have_content "リンク\nホームページ"
+        expect(page).to have_link 'ホームページ', href: 'https://example.com'
       end
     end
   end
