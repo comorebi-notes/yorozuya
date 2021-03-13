@@ -18,6 +18,10 @@ ja:
       year_month_ja: "%Y年%-m月"
       date: "%-m/%-d"
       date_ja: "%-m月%-d日"
+    order:
+      - :year
+      - :month
+      - :day
   time:
     am: 午前
     pm: 午後
@@ -55,4 +59,7 @@ ja:
       new: "%{model} 作成"
       edit: "%{model} 編集"
     label:
+      none: なし
       icon: "%{name}のアイコン"
+      eye_catch: "%{title}のアイキャッチ"
+      credit: "%{role}：%{name}"

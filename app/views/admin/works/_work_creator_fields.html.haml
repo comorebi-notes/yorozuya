@@ -1,0 +1,33 @@
+.nested-fields.form-row.align-items-center.mb-3.mb-sm-1
+  .col-sm-1.js-guest-checkbox-wrapper
+    .form-row.custom-control.custom-checkbox
+      .col-2.d-sm-none
+        %legend.text-md.col-form-label-sm.d-none.d-sm-inline= WorkCreator.human_attribute_name :guest
+      .col-10.col-sm-12
+        = f.check_box :guest, class: 'custom-control-input js-guest-checkbox'
+        = f.label :guest, class: 'custom-control-label mb-1 mb-sm-0' do
+          %span.col-form-label-sm.d-sm-none= WorkCreator.human_attribute_name :guest
+  .col-sm-3
+    .form-row
+      .col-2.d-sm-none= f.label :role, class: 'col-form-label-sm'
+      .col-10.col-sm-12
+        = f.collection_select :role, WorkCreator.roles, :first, ->(s) { WorkCreator.human_attribute_enum_value :role, s.first },
+          { include_blank: true }, class: 'form-control form-control-sm'
+  .col-sm-3.js-creator-select-wrapper
+    .form-row
+      .col-2.d-sm-none= f.label :creator_id, class: 'col-form-label-sm'
+      .col-10.col-sm-12
+        = f.collection_select :creator_id, creators, :id, :name, { include_blank: true }, class: 'form-control form-control-sm js-creator-select', disabled: f.object.guest?
+  .col-sm-3.js-name-field-wrapper
+    .form-row
+      .col-2.d-sm-none= f.label :name, class: 'col-form-label-sm'
+      .col-10.col-sm-12= f.text_field :name, class: 'form-control form-control-sm js-name-field', disabled: !f.object.guest?
+  .col-sm-2
+    .d-sm-flex.align-items-center
+      .form-row.flex-grow-1.mr-sm-1
+        .col-2.d-sm-none= f.label :xorder, class: 'col-form-label-sm'
+        .col-10.col-sm-12= f.number_field :xorder, class: 'form-control form-control-sm', min: 0
+      = link_to_remove_association f, class: 'text-danger' do
+        .text-right.text-sm-left
+          %i.fa.fa-times.fa-fw
+          %span.d-sm-none= t('admin.btn.destroy')

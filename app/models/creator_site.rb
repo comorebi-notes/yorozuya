@@ -21,10 +21,9 @@
 class CreatorSite < ApplicationRecord
   belongs_to :creator
 
-  enum kind: { general: 0, email: 1,
+  enum kind: { general: 0, homepage: 1, email: 2,
                twitter: 10, facebook: 11, instagram: 12,
-               youtube: 20, niconico: 21, soundcloud: 22, pixiv: 23,
-               homepage: 99 }
+               youtube: 20, niconico: 21, soundcloud: 22, pixiv: 23 }
 
   validates :name, presence: true
   validates :kind, presence: true

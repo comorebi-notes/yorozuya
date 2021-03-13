@@ -1,0 +1,7 @@
+ja:
+  admin:
+    works:
+      form:
+        icon_destroy: 現在のアイキャッチを削除する
+        work_creator:
+          add: クリエイターを追加する

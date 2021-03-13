@@ -34,7 +34,7 @@ entity Work {
   --
   title
   status
-  uri
+  slug
   release_date
   eye_catch
   description

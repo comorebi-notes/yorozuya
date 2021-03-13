@@ -1,0 +1,58 @@
+= form_with model: [:admin, work], remote: true do |f|
+  = render 'shared/errors', model: work
+  .form-group
+    = f.label :title, class: 'label--required'
+    = f.text_field :title, class: 'form-control', required: true
+  .form-group
+    = f.label :work_id
+    = f.collection_select :work_id, Work.where.not(id: work.id).order(:id), :id, :title, { include_blank: true }, class: 'form-control'
+  .form-group
+    = f.label :status, class: 'label--required'
+    = f.collection_select :status, Work.statuses, :first, ->(w) { Work.human_attribute_enum_value :status, w.first }, {}, class: 'form-control', required: true
+  .form-group
+    = f.label :slug, class: 'label--required'
+    = f.text_field :slug, class: 'form-control text-monospace', required: true
+  .form-group
+    = f.label :release_date, class: 'label--required'
+    .form-date-select
+      = f.date_select :release_date, { use_month_numbers: true, start_year: (Time.current - 100.years).year, end_year: Time.current.year, default: Time.current, date_separator: '<span></span>' }, class: 'form-control', required: true
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control js-dynamic-field', rows: 4
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control js-dynamic-field', rows: 4
+  .form-group
+    %legend.text-md= Work.human_attribute_name :eye_catch
+    .custom-file
+      = f.file_field :eye_catch, class: 'custom-file-input', lang: :ja
+      = f.label :eye_catch, class: 'custom-file-label custom-file-label-reverse' do
+        %span
+    - if work.eye_catch.attached?
+      = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:default]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--default mt-2 mb-1'
+      .custom-control.custom-checkbox
+        = check_box_tag :icon_destroy, true, false, class: 'custom-control-input'
+        = label_tag :icon_destroy, t('.icon_destroy'), class: 'custom-control-label'
+  .form-group
+    %legend.text-md.label--required= Work.human_attribute_name :work_creators
+    .card.card-body.js-work-creator-fields
+      %legend.mb-1
+        .form-row.text-sm.d-none.d-sm-flex
+          .col-1= WorkCreator.human_attribute_name :guest
+          .col-3= WorkCreator.human_attribute_name :role
+          .col-3= WorkCreator.human_attribute_name :creator_id
+          .col-3= WorkCreator.human_attribute_name :name
+          .col-2= WorkCreator.human_attribute_name :xorder
+      = f.fields_for :work_creators do |work_creator|
+        = render 'work_creator_fields', f: work_creator, creators: Creator.order(:id)
+      .mt-1
+        = link_to_add_association f, :work_creators, render_options: { locals: { creators: Creator.order(:id) } }, class: 'btn btn-outline-primary' do
+          %i.fa.fa-plus.fa-fw
+          = t('.work_creator.add')
+
+  = f.button type: :submit, class: 'btn btn-primary' do
+    %i.fa.fa-check.fa-fw
+    - if work.new_record?
+      = t('admin.btn.create', model: Work.model_name.human)
+    - else
+      = t('admin.btn.update', model: Work.model_name.human)

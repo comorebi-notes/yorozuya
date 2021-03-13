@@ -1,7 +1,7 @@
 = form_with model: [:admin, creator], remote: true do |f|
   = render 'shared/errors', model: creator
   .form-group
-    = f.label :name
+    = f.label :name, class: 'label--required'
     = f.text_field :name, class: 'form-control', required: true
   .form-group
     = f.label :profile
@@ -13,7 +13,7 @@
       = f.label :icon, class: 'custom-file-label custom-file-label-reverse' do
         %span
     - if creator.icon.attached?
-      = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), alt: t('admin.label.icon', name: @creator.name), class: 'icon--default mt-2 mb-1'
+      = image_tag creator.icon.variant(resize: Creator::ICON_SIZES[:default]), alt: t('admin.label.icon', name: creator.name), class: 'icon--default mt-2 mb-1'
       .custom-control.custom-checkbox
         = check_box_tag :icon_destroy, true, false, class: 'custom-control-input'
         = label_tag :icon_destroy, t('.icon_destroy'), class: 'custom-control-label'

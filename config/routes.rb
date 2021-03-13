@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
     resources :users, only: %i[index new create edit update destroy]
     resources :creators
+    resources :works, param: :slug
   end
 end

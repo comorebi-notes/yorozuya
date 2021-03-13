@@ -1,0 +1,163 @@
+// ========== Layout ==========
+
+html, body
+  min-height: 100vh
+
+body
+  display: flex
+  flex-direction: column
+
+.main-wrapper
+  $nav_width: 280px
+  flex-grow: 1
+  display: flex
+  > nav
+    width: $nav_width
+    min-width: $nav_width
+    background-color: $brown
+  > main
+    flex-grow: 1
+    max-width: calc(100% - #{$nav_width})
+    padding: 2rem 2rem 4rem
+
+.nav-menu
+  padding-left: 0
+  li a
+    display: block
+    width: 100%
+    padding: 1rem
+    text-decoration: none
+    font-weight: bold
+    color: rgba($white, .8)
+    +link-action
+      color: lighten($primary, 10%)
+      background-color: rgba($black, .2)
+    &.active
+      color: lighten($primary, 10%)
+      background-color: rgba($black, .2)
+    svg
+      @extend .mr-1
+
+.breadcrumbs
+  margin-bottom: 3rem
+  color: $gray
+  font-size: $font-size-xs
+  font-weight: bold
+  &__separator
+    color: $gray-light
+    margin: 0 .48rem
+    &:before
+      content: ">"
+      display: inline-block
+      transform: scale(.4, .8)
+
+.page-title
+  font-size: $h2-font-size
+  margin-bottom: 1.6rem
+.btn-area
+  margin-bottom: 1.6rem
+
+// ========== Utils ==========
+
+.bg
+  &-gray
+    background-color: $gray
+    &-lighest
+      background-color: $gray-lightest
+    &-ligher
+      background-color: $gray-lighter
+    &-light
+      background-color: $gray-light
+    &-dark
+      background-color: $gray-dark
+    &-darker
+      background-color: $gray-darker
+    &-darkest
+      background-color: $gray-darkest
+
+.table-th-min
+  th
+    @extend .text-nowrap
+    width: 1px
+.table-th-25
+  th
+    width: 25%
+.table-th-33
+  th
+    width: 33%
+
+.list
+  &-wide
+    li:not(:last-child)
+      margin-bottom: .4rem
+
+.icon
+  @extend .rounded
+  a &
+    transition: all $animation-duration ease-in-out
+    +link-action
+      border-radius: 50% !important
+      opacity: .8
+  &--default
+    @extend .icon
+    width: 128px
+    height: 128px
+  &--thumb
+    @extend .icon
+    width: 64px
+    height: 64px
+  &--icon
+    @extend .icon
+    border-radius: 50% !important
+    width: 24px
+    height: 24px
+
+.eye-catch
+  @extend .rounded
+  a &
+    transition: all $animation-duration ease-in-out
+    +link-action
+      opacity: .8
+  &--default
+    @extend .eye-catch
+    width: 600px
+    height: 315px
+  &--thumb
+    @extend .eye-catch
+    width: 100px
+    height: 52.5px
+
+// ==== Forms ====
+
+.label
+  &--required
+    &:after
+      content: "(必須)"
+      display: inline-block
+      color: $danger
+      font-size: .75em
+      font-weight: bold
+      margin-left: .2rem
+
+
+.form-date-select
+  display: flex
+  align-items: baseline
+  select
+    width: auto
+    min-width: 80px
+    margin: 0 .24rem 0 .4rem
+    +media-breakpoint-down(xs)
+      min-width: 68px
+    &:first-of-type
+      min-width: 120px
+      margin-left: 0
+      +media-breakpoint-down(xs)
+        min-width: 84px
+  &:after
+    content: "日"
+  span
+    &:first-of-type:after
+      content: "年"
+    &:last-of-type:after
+      content: "月"

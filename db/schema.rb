@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_160859) do
+ActiveRecord::Schema.define(version: 2021_03_13_085015) do
 
   create_table "active_storage_attachments", charset: "utf8", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -67,7 +67,38 @@ ActiveRecord::Schema.define(version: 2021_03_11_160859) do
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
   end
 
+  create_table "work_creators", charset: "utf8", collation: "utf8_unicode_ci", force: :cascade do |t|
+    t.integer "role", default: 0, null: false
+    t.boolean "guest", default: false, null: false
+    t.string "name"
+    t.integer "xorder", default: 0, null: false
+    t.bigint "creator_id"
+    t.bigint "work_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_work_creators_on_creator_id"
+    t.index ["work_id"], name: "index_work_creators_on_work_id"
+  end
+
+  create_table "works", charset: "utf8", collation: "utf8_unicode_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "status", default: 0, null: false
+    t.string "slug", null: false
+    t.date "release_date", null: false
+    t.text "description"
+    t.text "content"
+    t.integer "like", default: 0, null: false
+    t.bigint "work_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_works_on_slug", unique: true
+    t.index ["work_id"], name: "index_works_on_work_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "creator_sites", "creators"
+  add_foreign_key "work_creators", "creators"
+  add_foreign_key "work_creators", "works"
+  add_foreign_key "works", "works"
 end

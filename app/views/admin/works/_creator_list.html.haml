@@ -1,0 +1,14 @@
+- if work.work_creators.present?
+  %ul.list-unstyled.list-wide.text-sm.mb-0
+    - work.work_creators.each do |work_creator|
+      %li
+        - if work_creator.guest?
+          %span.icon--icon.bg-gray-light.d-inline-block.align-middle
+          = t('admin.label.credit', role: work_creator.human_attribute_enum(:role), name: work_creator.name)
+        - else
+          = link_to admin_creator_path(work_creator.creator) do
+            - if work_creator.creator.icon.attached?
+              = image_tag work_creator.creator.icon.variant(resize: Creator::ICON_SIZES[:icon]), alt: t('admin.label.icon', name: work_creator.creator.name), class: 'icon--icon'
+            - else
+              %span.icon--icon.bg-gray-light.d-inline-block.align-middle
+            = t('admin.label.credit', role: work_creator.human_attribute_enum(:role), name: work_creator.creator.name)

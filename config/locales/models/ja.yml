@@ -4,6 +4,7 @@ ja:
       user: 管理者
       creator: クリエイター
       creator_site: リンク
+      work: 作品
     attributes:
       user:
         name: 名前
@@ -34,3 +35,48 @@ ja:
         soundcloud: SoundCloud
         pixiv: Pixiv
         homepage: ホームページ
+      work:
+        title: タイトル
+        status: 状態
+        slug: URI
+        release_date: 公開日
+        description: 概要
+        content: 内容
+        like: いいね
+        eye_catch: アイキャッチ
+        work_creators: クリエイター
+        work_id: 親作品
+        parent: 親作品
+        children: 子作品
+      work/status:
+        draft: 下書き
+        published: 公開
+      work/work_creators:
+        creator: クリエイター
+        name: クリエイターの名前
+        role: クリエイターの役割
+        xorder: クリエイターの順番
+      work_creator:
+        creator_id: クリエイター
+        role: 役割
+        xorder: 順番
+        guest: ゲスト
+        name: 名前
+      work_creator/role:
+        author: 作者
+        vocal: ボーカル
+        chorus: コーラス
+        composer: 作曲
+        lyricist: 作詞
+        arranger: 編曲
+        mixer: MIX
+        mastering: マスタリング
+        illustrator: イラスト
+        video: 映像
+        comic: 漫画
+        story: 原作
+        drawer: 作画
+        designer: デザイン
+        programmer: プログラム
+        planner: 企画
+        guest: ゲスト

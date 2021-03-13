@@ -22,8 +22,8 @@
             - if creator.icon.attached?
               = image_tag creator.icon.variant(resize: Creator::ICON_SIZES[:thumb]), alt: t('admin.label.icon', name: creator.name), class: 'icon--thumb'
             - else
-              %span.font-weight-bolder.text-sm NO ICON
-        %td= creator.name
+              %span.font-weight-bolder.text-sm NO IMAGE
+        %td.font-weight-bold= creator.name
         %td= hbr creator.profile
         %td
           - if creator.creator_sites.present?

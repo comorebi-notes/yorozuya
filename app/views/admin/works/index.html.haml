@@ -1,0 +1,46 @@
+- breadcrumb :admin_works
+%h1.page-title= t('admin.page_title.index', model: Work.model_name.human)
+.btn-area
+  = link_to new_admin_work_path, class: 'btn btn-primary' do
+    %i.fa.fa-plus.fa-fw
+    = t('admin.btn.new')
+.table-responsive
+  %table.table.table-bordered.table-middle
+    %thead
+      %tr
+        %th ID
+        %th= Work.human_attribute_name :eye_catch
+        %th= Work.human_attribute_name :title
+        %th= Work.human_attribute_name :status
+        %th= Work.human_attribute_name :slug
+        %th= Work.human_attribute_name :release_date
+        %th= Work.human_attribute_name :work_creators
+        %th= Work.human_attribute_name :like
+        %th
+    %tbody
+      - Work.includes(work_creators: { creator: { icon_attachment: :blob } }, eye_catch_attachment: :blob).order(release_date: :desc).each do |work|
+        %tr
+          %th= work.id
+          %td
+            = link_to admin_work_path(work) do
+              - if work.eye_catch.attached?
+                = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:thumb]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--thumb'
+              - else
+                %span.font-weight-bolder.text-sm NO IMAGE
+          %td.font-weight-bold= work.title
+          %td= work.human_attribute_enum :status
+          %td
+            %code.text-break= work.slug
+          %td= l work.release_date if work.release_date.present?
+          %td= render 'creator_list', work: work
+          %td= work.like.to_s(:delimited)
+          %td.text-nowrap
+            %ul.list-inline.mb-0
+              %li.list-inline-item
+                = link_to edit_admin_work_path(work), class: 'btn btn-sm btn-outline-primary mb-1 mb-sm-0' do
+                  %i.fa.fa-edit.fa-fw
+                  = t('admin.btn.edit')
+              %li.list-inline-item
+                = link_to admin_work_path(work), method: :delete, data: { confirm: t('admin.btn.destroy_confirm') }, class: 'btn btn-sm btn-outline-danger mb-sm-0' do
+                  %i.fa.fa-ban.fa-fw
+                  = t('admin.btn.destroy')

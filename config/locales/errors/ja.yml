@@ -5,6 +5,7 @@ ja:
       record_invalid: バリデーションに失敗しました。%{errors}
       restrict_dependent_destroy: ! '%{record}が存在しているため削除できません。'
       blank: を入力してください。
+      required: を入力してください。
       present: は入力しないでください。
       confirmation: と%{attribute}の入力が一致しません。
       empty: を入力してください。
@@ -21,5 +22,5 @@ ja:
       not_a_number: は数値で入力してください。
       not_an_integer: は整数で入力してください。
       taken: はすでに存在します。
-      too_long: は%{count}文字以内で入力してください。
-      too_short: は%{count}文字以上で入力してください。
+      too_long: は%{count}つ以内で入力してください。
+      too_short: は%{count}つ以上で入力してください。
