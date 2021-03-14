@@ -14,6 +14,9 @@ gem 'bcrypt', '~> 3.1.7'
 # ActiveStorage
 gem 'image_processing', '~> 1.2'
 
+# Pagination
+gem 'pagy'
+
 # View
 gem 'haml-rails'
 gem 'gretel'

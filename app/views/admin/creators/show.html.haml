@@ -11,23 +11,26 @@
       = t('admin.btn.destroy')
 - if @creator.icon.attached?
   = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), alt: t('admin.label.icon', name: @creator.name), class: 'icon--default mb-4'
-%table.table.table-bordered.table-th-min.table-middle
-  %colgroup
-  %tr
-    %th ID
-    %td= @creator.id
-  %tr
-    %th= Creator.human_attribute_name :name
-    %td.font-weight-bold= @creator.name
-  %tr
-    %th= Creator.human_attribute_name :profile
-    %td= hbr @creator.profile
-  %tr
-    %th= Creator.human_attribute_name :creator_sites
-    %td
-      %ul.mb-0
-        - @creator.creator_sites.each do |creator_site|
-          %li
-            = link_to creator_site.url, target: :_blank do
-              = creator_site.name
-              %i.fa.fa-external-link-alt.fa-xs.fa-fw
+%section.table-responsive
+  %table.table.table-bordered.table-th-min.table-middle
+    %colgroup
+    %tr
+      %th ID
+      %td= @creator.id
+    %tr
+      %th= Creator.human_attribute_name :name
+      %td.font-weight-bold= @creator.name
+    %tr
+      %th= Creator.human_attribute_name :profile
+      %td= hbr @creator.profile
+    %tr
+      %th= Creator.human_attribute_name :creator_sites
+      %td
+        %ul.mb-0
+          - @creator.creator_sites.each do |creator_site|
+            %li
+              = link_to creator_site.url, target: :_blank do
+                = creator_site.name
+                %i.fa.fa-external-link-alt.fa-xs.fa-fw
+%section
+  %h2.page-sub-title 作品

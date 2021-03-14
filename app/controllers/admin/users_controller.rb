@@ -1,7 +1,9 @@
 class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: %i[edit update destroy]
 
-  def index; end
+  def index
+    @pagy, @users = pagy User.order(:id)
+  end
 
   def new; end
 

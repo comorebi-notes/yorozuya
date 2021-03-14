@@ -3,7 +3,9 @@ class Admin::CreatorsController < Admin::ApplicationController
   before_action :set_creator, only: %i[show edit update destroy]
   before_action :build_creator_sites, only: %i[new edit]
 
-  def index; end
+  def index
+    @pagy, @creators = pagy Creator.includes(:creator_sites, icon_attachment: :blob).order(:id)
+  end
 
   def show; end
 

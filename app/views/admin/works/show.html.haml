@@ -11,49 +11,50 @@
       = t('admin.btn.destroy')
 - if @work.eye_catch.attached?
   = image_tag @work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:default]), alt: t('admin.label.eye_catch', title: @work.title), class: 'eye-catch--default mb-4'
-%table.table.table-bordered.table-th-min.table-middle
-  %colgroup
-  %tr
-    %th ID
-    %td= @work.id
-  %tr
-    %th= Work.human_attribute_name :title
-    %td.font-weight-bold= @work.title
-  %tr
-    %th= Work.human_attribute_name :parent
-    %td
-      - if @work.parent.present?
-        = link_to @work.parent.title, admin_work_path(@work.parent)
-      - else
-        .text-muted= t('admin.label.none')
-  %tr
-    %th= Work.human_attribute_name :children
-    %td
-      - if @work.children.present?
-        %ul.mb-0
-          - @work.children.each do |child|
-            %li= link_to child.title, admin_work_path(child)
-      - else
-        .text-muted= t('admin.label.none')
-  %tr
-    %th= Work.human_attribute_name :status
-    %td= @work.human_attribute_enum :status
-  %tr
-    %th= Work.human_attribute_name :slug
-    %td
-      %code= @work.slug
-  %tr
-    %th= Work.human_attribute_name :release_date
-    %td= l @work.release_date if @work.release_date.present?
-  %tr
-    %th= Work.human_attribute_name :description
-    %td= hbr @work.description
-  %tr
-    %th= Work.human_attribute_name :content
-    %td= hbr @work.content
-  %tr
-    %th= Work.human_attribute_name :work_creators
-    %td= render 'creator_list', work: @work
-  %tr
-    %th= Work.human_attribute_name :like
-    %td= @work.like.to_s(:delimited)
+.table-responsive
+  %table.table.table-bordered.table-th-min.table-middle
+    %colgroup
+    %tr
+      %th ID
+      %td= @work.id
+    %tr
+      %th= Work.human_attribute_name :title
+      %td.font-weight-bold= @work.title
+    %tr
+      %th= Work.human_attribute_name :parent
+      %td
+        - if @work.parent.present?
+          = link_to @work.parent.title, admin_work_path(@work.parent)
+        - else
+          .text-muted= t('admin.label.none')
+    %tr
+      %th= Work.human_attribute_name :children
+      %td
+        - if @work.children.present?
+          %ul.mb-0
+            - @work.children.each do |child|
+              %li= link_to child.title, admin_work_path(child)
+        - else
+          .text-muted= t('admin.label.none')
+    %tr
+      %th= Work.human_attribute_name :status
+      %td= @work.human_attribute_enum :status
+    %tr
+      %th= Work.human_attribute_name :slug
+      %td
+        %code= @work.slug
+    %tr
+      %th= Work.human_attribute_name :release_date
+      %td= l @work.release_date if @work.release_date.present?
+    %tr
+      %th= Work.human_attribute_name :description
+      %td= hbr @work.description
+    %tr
+      %th= Work.human_attribute_name :content
+      %td= hbr @work.content
+    %tr
+      %th= Work.human_attribute_name :work_creators
+      %td= render 'creator_list', work: @work
+    %tr
+      %th= Work.human_attribute_name :like
+      %td= @work.like.to_s(:delimited)

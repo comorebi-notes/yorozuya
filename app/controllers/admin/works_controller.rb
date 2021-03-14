@@ -3,7 +3,9 @@ class Admin::WorksController < Admin::ApplicationController
   before_action :set_work, only: %i[show edit update destroy]
   before_action :build_work_creators, only: %i[new edit]
 
-  def index; end
+  def index
+    @pagy, @works = pagy Work.includes(work_creators: { creator: { icon_attachment: :blob } }, eye_catch_attachment: :blob).order(release_date: :desc)
+  end
 
   def show; end
 

@@ -53,6 +53,7 @@ ja:
         published: 公開
       work/work_creators:
         creator: クリエイター
+        creator_id: クリエイター
         name: クリエイターの名前
         role: クリエイターの役割
         xorder: クリエイターの順番

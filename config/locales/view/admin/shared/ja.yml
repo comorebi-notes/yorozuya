@@ -1,0 +1,7 @@
+ja:
+  admin:
+    shared:
+      pagy:
+        prev_html: <i class="fa fa-chevron-left"></i>
+        next_html: <i class="fa fa-chevron-right"></i>
+        gap_html: <i class="fa fa-ellipsis-h"></i>

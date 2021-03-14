@@ -1,9 +1,11 @@
 class Admin::ApplicationController < ApplicationController
-  layout 'admin'
+  include Pagy::Backend
 
   before_action :require_login!
 
   protect_from_forgery with: :exception
+
+  layout 'admin'
 
   def current_user
     @current_user ||= User.find_by(remember_token: User.encrypt(cookies[:user_remember_token]))

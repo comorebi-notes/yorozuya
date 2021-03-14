@@ -1,5 +1,4 @@
 // ========== Layout ==========
-
 html, body
   min-height: 100vh
 
@@ -38,27 +37,19 @@ body
     svg
       @extend .mr-1
 
-.breadcrumbs
-  margin-bottom: 3rem
-  color: $gray
-  font-size: $font-size-xs
-  font-weight: bold
-  &__separator
-    color: $gray-light
-    margin: 0 .48rem
-    &:before
-      content: ">"
-      display: inline-block
-      transform: scale(.4, .8)
-
 .page-title
   font-size: $h2-font-size
   margin-bottom: 1.6rem
 .btn-area
   margin-bottom: 1.6rem
+.page-sub-title
+  font-size: $h3-font-size
+  margin-bottom: 1.2rem
+
+section + section
+  margin-top: 1.6rem
 
 // ========== Utils ==========
-
 .bg
   &-gray
     background-color: $gray
@@ -128,7 +119,6 @@ body
     height: 52.5px
 
 // ==== Forms ====
-
 .label
   &--required
     &:after
@@ -138,7 +128,6 @@ body
       font-size: .75em
       font-weight: bold
       margin-left: .2rem
-
 
 .form-date-select
   display: flex
@@ -161,3 +150,26 @@ body
       content: "年"
     &:last-of-type:after
       content: "月"
+
+// ========== Library ==========
+// ==== Gretel ====
+.breadcrumbs
+  margin-bottom: 3rem
+  color: $gray
+  font-size: $font-size-xs
+  font-weight: bold
+  &__separator
+    color: $gray-light
+    margin: 0 .48rem
+    &:before
+      content: ">"
+      display: inline-block
+      transform: scale(.4, .8)
+
+// ==== Pagy ====
+.pagy-bootstrap-nav
+  .table-responsive + &
+    margin-top: 1.2rem
+  .disabled
+    .page-link
+      color: $gray-lighter
