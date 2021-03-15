@@ -31,10 +31,10 @@ class Work < ApplicationRecord
   belongs_to :parent, class_name: 'Work', foreign_key: :work_id, optional: true, inverse_of: :parent
 
   has_many :children, class_name: 'Work', dependent: :nullify, inverse_of: :parent
-  has_many :work_creators, -> { order(:role).order(:xorder) }, dependent: :destroy, inverse_of: :work
+  has_many :work_creators, -> { order(:xorder).order(:role) }, dependent: :destroy, inverse_of: :work
   has_many :creators, through: :work_creators
 
-  accepts_nested_attributes_for :work_creators, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :work_creators, reject_if: ->(attributes) { attributes[:role].blank? }, allow_destroy: true
 
   enum status: { draft: 0, published: 1 }
 

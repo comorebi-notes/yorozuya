@@ -7,16 +7,16 @@ body
   flex-direction: column
 
 .main-wrapper
-  $nav_width: 280px
+  $nav-width: 280px
   flex-grow: 1
   display: flex
   > nav
-    width: $nav_width
-    min-width: $nav_width
+    width: $nav-width
+    min-width: $nav-width
     background-color: $brown
   > main
     flex-grow: 1
-    max-width: calc(100% - #{$nav_width})
+    max-width: calc(100% - #{$nav-width})
     padding: 2rem 2rem 4rem
 
 .nav-menu
@@ -46,9 +46,6 @@ body
   font-size: $h3-font-size
   margin-bottom: 1.2rem
 
-section + section
-  margin-top: 1.6rem
-
 // ========== Utils ==========
 .bg
   &-gray
@@ -66,16 +63,28 @@ section + section
     &-darkest
       background-color: $gray-darkest
 
-.table-th-min
-  th
-    @extend .text-nowrap
-    width: 1px
-.table-th-25
-  th
-    width: 25%
-.table-th-33
-  th
-    width: 33%
+.table
+  &__th
+    &--min
+      th
+        @extend .text-nowrap
+        width: 1px
+    &--25
+      th
+        width: 25%
+    &--33
+      th
+        width: 33%
+  &__td
+    &--with-buttons
+      $button-gutter-width: .3rem
+      padding-top: $table-cell-padding - $button-gutter-width !important
+      padding-bottom: $table-cell-padding - $button-gutter-width !important
+      ul
+        margin-bottom: 0
+        li
+          margin-top: $button-gutter-width
+          margin-bottom: $button-gutter-width
 
 .list
   &-wide

@@ -23,4 +23,4 @@ ja:
       not_an_integer: は整数で入力してください。
       taken: はすでに存在します。
       too_long: は%{count}つ以内で入力してください。
-      too_short: は%{count}つ以上で入力してください。
+      too_short: は%{count}つ以上入力してください。

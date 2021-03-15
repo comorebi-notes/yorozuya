@@ -1,0 +1,41 @@
+.table-responsive
+  %table.table.table-bordered.table-middle
+    %thead
+      %tr
+        %th ID
+        %th= Work.human_attribute_name :eye_catch
+        %th= Work.human_attribute_name :title
+        %th= Work.human_attribute_name :status
+        %th= Work.human_attribute_name :slug
+        %th= Work.human_attribute_name :release_date
+        %th= Work.human_attribute_name :work_creators
+        %th= Work.human_attribute_name :like
+        %th
+    %tbody
+      - works.each do |work|
+        %tr{ class: work.draft? ? 'bg-gray-lightest' : '' }
+          %th= work.id
+          %td
+            = link_to admin_work_path(work) do
+              - if work.eye_catch.attached?
+                = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:thumb]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--thumb'
+              - else
+                %span.font-weight-bolder.text-sm NO IMAGE
+          %td.font-weight-bold= work.title
+          %td= work.human_attribute_enum :status
+          %td
+            %code.text-break= work.slug
+          %td= l work.release_date if work.release_date.present?
+          %td= render 'admin/works/creator_list', work: work
+          %td= work.like.to_s(:delimited)
+          %td.table__td--with-buttons
+            %ul.list-inline
+              %li.list-inline-item
+                = link_to edit_admin_work_path(work), class: 'btn btn-sm btn-outline-primary mb-1 mb-sm-0' do
+                  %i.fa.fa-edit.fa-fw
+                  = t('admin.btn.edit')
+              %li.list-inline-item
+                = link_to admin_work_path(work), method: :delete, data: { confirm: t('admin.btn.destroy_confirm') }, class: 'btn btn-sm btn-outline-danger mb-sm-0' do
+                  %i.fa.fa-ban.fa-fw
+                  = t('admin.btn.destroy')
+= render 'admin/shared/pagy'

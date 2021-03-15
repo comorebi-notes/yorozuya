@@ -12,7 +12,7 @@
 - if @creator.icon.attached?
   = image_tag @creator.icon.variant(resize: Creator::ICON_SIZES[:default]), alt: t('admin.label.icon', name: @creator.name), class: 'icon--default mb-4'
 %section.table-responsive
-  %table.table.table-bordered.table-th-min.table-middle
+  %table.table.table-bordered.table__th--min.table-middle
     %colgroup
     %tr
       %th ID
@@ -34,3 +34,4 @@
                 %i.fa.fa-external-link-alt.fa-xs.fa-fw
 %section
   %h2.page-sub-title 作品
+= render 'admin/works/table', works: @works

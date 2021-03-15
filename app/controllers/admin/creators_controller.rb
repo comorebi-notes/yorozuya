@@ -7,7 +7,9 @@ class Admin::CreatorsController < Admin::ApplicationController
     @pagy, @creators = pagy Creator.includes(:creator_sites, icon_attachment: :blob).order(:id)
   end
 
-  def show; end
+  def show
+    @pagy, @works = pagy @creator.works.includes(work_creators: { creator: { icon_attachment: :blob } }, eye_catch_attachment: :blob).order(release_date: :desc)
+  end
 
   def new; end
 

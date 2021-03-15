@@ -34,8 +34,8 @@
                     = link_to creator_site.url, target: :_blank do
                       = creator_site.name
                       %i.fa.fa-external-link-alt.fa-xs.fa-fw
-          %td.text-nowrap
-            %ul.list-inline.mb-0
+          %td.table__td--with-buttons
+            %ul.list-inline
               %li.list-inline-item
                 = link_to edit_admin_creator_path(creator), class: 'btn btn-sm btn-outline-primary mb-1 mb-sm-0' do
                   %i.fa.fa-edit.fa-fw

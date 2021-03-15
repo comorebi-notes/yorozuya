@@ -58,6 +58,6 @@ class Admin::WorksController < Admin::ApplicationController
   end
 
   def build_work_creators
-    @work.work_creators.build(role: nil, xorder: nil)
+    @work.work_creators.build(role: nil)
   end
 end

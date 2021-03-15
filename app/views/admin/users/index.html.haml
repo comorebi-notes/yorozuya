@@ -18,8 +18,8 @@
           %th= user.id
           %td= user.name
           %td= user.screen_name
-          %td.text-nowrap
-            %ul.list-inline.mb-0
+          %td.table__td--with-buttons
+            %ul.list-inline
               %li.list-inline-item
                 = link_to edit_admin_user_path(user), class: 'btn btn-sm btn-outline-primary mb-1 mb-sm-0' do
                   %i.fa.fa-edit.fa-fw

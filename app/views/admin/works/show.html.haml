@@ -12,7 +12,7 @@
 - if @work.eye_catch.attached?
   = image_tag @work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:default]), alt: t('admin.label.eye_catch', title: @work.title), class: 'eye-catch--default mb-4'
 .table-responsive
-  %table.table.table-bordered.table-th-min.table-middle
+  %table.table.table-bordered.table__th--min.table-middle
     %colgroup
     %tr
       %th ID
