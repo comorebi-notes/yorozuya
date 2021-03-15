@@ -24,6 +24,6 @@ FactoryBot.define do
     kind { :general }
     url { 'https://example.com' }
 
-    association :creator
+    creator
   end
 end

@@ -109,6 +109,6 @@ def force_submit!(form_selector = 'main form')
   page.execute_script "document.querySelector('#{form_selector}').submit()"
 end
 
-def sample_icon = Rails.root.join('spec/support/files/icon.png')
+def sample_image = Rails.root.join('spec/support/files/icon.png')
 
-def uploaded_sample_icon = Rack::Test::UploadedFile.new('spec/support/files/icon.png', 'image/png')
+def uploaded_sample_image = Rack::Test::UploadedFile.new(sample_image, 'image/png')

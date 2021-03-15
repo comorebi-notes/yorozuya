@@ -12,7 +12,7 @@ FactoryBot.define do
   factory :creator do
     name { 'ケロ' }
     profile { 'yorozu no mono wo tsukurikeri.' }
-    icon { uploaded_sample_icon }
+    icon { uploaded_sample_image }
 
     trait :with_site do |creator|
       creator.creator_sites << build(:creator_site) if creator.creator_sites.blank?

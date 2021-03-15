@@ -14,7 +14,7 @@ describe '/admin/creators/new', type: :system do
         fill_in '名前', with: '穂村あかね'
       end
       fill_in 'プロフィール', with: '教えてポヨよん'
-      attach_file :creator_icon, sample_icon, make_visible: true
+      attach_file :creator_icon, sample_image, make_visible: true
       within '.nested-fields' do
         fill_in '名前', with: 'ホームページ'
         select 'ホームページ', from: '種類'

@@ -56,4 +56,7 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.raise         = true # raise an error if n+1 query occurs
   end
+
+  config.autoloader = :classic
+  config.active_job.queue_adapter = :inline
 end

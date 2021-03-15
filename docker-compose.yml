@@ -4,6 +4,8 @@ services:
     image: mysql:8.0.23
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
+    cap_add:
+      - SYS_NICE
     ports:
       - 3308:3306
     volumes:

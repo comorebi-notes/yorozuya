@@ -6,7 +6,7 @@ describe '/admin/creators', type: :system do
   let(:subject_path) { admin_creators_path }
   let!(:creator) do
     create :creator,
-           name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.', icon: uploaded_sample_icon,
+           name: 'ケロ', profile: 'yorozu no mono wo tsukurikeri.', icon: uploaded_sample_image,
            creator_sites: [build(:creator_site, name: 'ホームページ', kind: :homepage, url: 'https://example.com')]
   end
 
