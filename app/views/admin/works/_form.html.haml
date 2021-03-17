@@ -17,23 +17,6 @@
     .form-date-select
       = f.date_select :release_date, { use_month_numbers: true, start_year: (Time.current - 100.years).year, end_year: Time.current.year, default: Time.current, date_separator: '<span></span>' }, class: 'form-control', required: true
   .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control js-dynamic-field', rows: 4
-  .form-group
-    = f.label :content
-    = f.text_area :content, class: 'form-control js-dynamic-field', rows: 4
-  .form-group
-    %legend.text-md= Work.human_attribute_name :eye_catch
-    .custom-file
-      = f.file_field :eye_catch, class: 'custom-file-input', lang: :ja
-      = f.label :eye_catch, class: 'custom-file-label custom-file-label-reverse' do
-        %span
-    - if work.eye_catch.attached?
-      = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:default]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--default mt-2 mb-1'
-      .custom-control.custom-checkbox
-        = check_box_tag :icon_destroy, true, false, class: 'custom-control-input'
-        = label_tag :icon_destroy, t('.icon_destroy'), class: 'custom-control-label'
-  .form-group
     %legend.text-md.label--required= Work.human_attribute_name :work_creators
     .card.card-body.js-work-creator-fields
       %legend.mb-1
@@ -49,6 +32,20 @@
         = link_to_add_association f, :work_creators, render_options: { locals: { creators: Creator.order(:id) } }, class: 'btn btn-outline-primary' do
           %i.fa.fa-plus.fa-fw
           = t('.work_creator.add')
+  .form-group
+    %legend.text-md= Work.human_attribute_name :eye_catch
+    .custom-file
+      = f.file_field :eye_catch, class: 'custom-file-input', lang: :ja
+      = f.label :eye_catch, class: 'custom-file-label custom-file-label-reverse' do
+        %span
+    - if work.eye_catch.attached?
+      = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:default]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--default mt-2 mb-1'
+      .custom-control.custom-checkbox
+        = check_box_tag :icon_destroy, true, false, class: 'custom-control-input'
+        = label_tag :icon_destroy, t('.icon_destroy'), class: 'custom-control-label'
+  .form-group
+    = f.label :content
+    = f.rich_text_area :content
   = f.button type: :submit, class: 'btn btn-primary' do
     %i.fa.fa-check.fa-fw
     - if work.new_record?

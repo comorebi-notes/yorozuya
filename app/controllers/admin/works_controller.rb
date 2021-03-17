@@ -45,7 +45,7 @@ class Admin::WorksController < Admin::ApplicationController
 
   def work_params
     params.require(:work)
-          .permit(:title, :status, :slug, :release_date, :description, :content, :eye_catch, :work_id,
+          .permit(:title, :status, :slug, :release_date, :content, :eye_catch, :work_id,
                   work_creators_attributes: %i[id guest role xorder creator_id name _destroy])
   end
 

@@ -47,11 +47,8 @@
       %th= Work.human_attribute_name :release_date
       %td= l @work.release_date if @work.release_date.present?
     %tr
-      %th= Work.human_attribute_name :description
-      %td= hbr @work.description
-    %tr
       %th= Work.human_attribute_name :content
-      %td= hbr @work.content
+      %td= @work.content
     %tr
       %th= Work.human_attribute_name :work_creators
       %td= render 'creator_list', work: @work

@@ -27,3 +27,7 @@ requireContext.keys().forEach(requireContext)
 
 // 画像
 require.context('../images/admin', true)
+
+// ActionText
+window.Trix = require('trix')
+require('@rails/actiontext')

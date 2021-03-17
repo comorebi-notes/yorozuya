@@ -37,7 +37,6 @@ entity Work {
   slug
   release_date
   eye_catch
-  description
   content
   like
   --

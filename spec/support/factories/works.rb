@@ -29,7 +29,6 @@ FactoryBot.define do
     status { :published }
     slug { 'work_slug' }
     release_date { Time.zone.today }
-    description { 'これはこういった作品です。' }
     content { '以上、こういった作品でした。' }
     like { 1000 }
     eye_catch { uploaded_sample_image }

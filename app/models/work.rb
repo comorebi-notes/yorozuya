@@ -3,8 +3,6 @@
 # Table name: works
 #
 #  id           :bigint           not null, primary key
-#  content      :text(65535)
-#  description  :text(65535)
 #  like         :integer          default(0), not null
 #  release_date :date             not null
 #  slug         :string(255)      not null
@@ -27,6 +25,7 @@ class Work < ApplicationRecord
   EYE_CATCH_SIZES = { large: [1920, 1008], default: [1200, 630], thumb: [200, 105] }.freeze
 
   has_one_attached :eye_catch
+  has_rich_text :content
 
   belongs_to :parent, class_name: 'Work', foreign_key: :work_id, optional: true, inverse_of: :parent
 

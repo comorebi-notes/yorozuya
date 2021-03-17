@@ -3,8 +3,6 @@
 # Table name: works
 #
 #  id           :bigint           not null, primary key
-#  content      :text(65535)
-#  description  :text(65535)
 #  like         :integer          default(0), not null
 #  release_date :date             not null
 #  slug         :string(255)      not null
