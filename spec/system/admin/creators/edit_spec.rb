@@ -39,9 +39,9 @@ describe '/admin/creators/:id/edit', type: :system do
       fill_in 'プロフィール', with: '教えてポヨよん'
       check '現在のアイコンを削除する'
       within '.nested-fields ~ .nested-fields' do
-        fill_in '名前', with: '@tos'
         select 'Twitter', from: '種類'
         fill_in 'URL', with: 'https://twitter.com/tos'
+        fill_in '名前', with: '@tos'
       end
       click_button 'クリエイターを更新する'
     end
