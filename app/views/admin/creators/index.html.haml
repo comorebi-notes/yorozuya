@@ -30,10 +30,7 @@
             - if creator.creator_sites.present?
               %ul.mb-0
                 - creator.creator_sites.each do |creator_site|
-                  %li
-                    = link_to creator_site.url, target: :_blank do
-                      = creator_site.name
-                      %i.fa.fa-external-link-alt.fa-xs.fa-fw
+                  %li= link_to creator_site.name, creator_site.url, target: :_blank
           %td.table__td--with-buttons
             %ul.list-inline
               %li.list-inline-item
