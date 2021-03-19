@@ -15,16 +15,14 @@ describe '/admin/creators/:id', type: :system do
     visit subject_path
   end
 
-  describe '詳細' do
-    it '表示が正しいこと' do
-      aggregate_failures do
-        expect(page).to have_content "ID #{creator.id}"
-        expect(page).to have_selector '.icon--default'
-        expect(page).to have_content '名前 ケロ'
-        expect(page).to have_content 'プロフィール yorozu no mono wo tsukurikeri.'
-        expect(page).to have_content "リンク\nホームページ"
-        expect(page).to have_link 'ホームページ', href: 'https://example.com'
-      end
+  it '表示が正しいこと' do
+    aggregate_failures do
+      expect(page).to have_content "ID #{creator.id}"
+      expect(page).to have_selector '.icon--default'
+      expect(page).to have_content '名前 ケロ'
+      expect(page).to have_content 'プロフィール yorozu no mono wo tsukurikeri.'
+      expect(page).to have_content "リンク\nホームページ"
+      expect(page).to have_link 'ホームページ', href: 'https://example.com'
     end
   end
 
@@ -44,6 +42,30 @@ describe '/admin/creators/:id', type: :system do
         expect(page).to have_content 'クリエイターを削除しました'
         expect(page).not_to have_content 'ケロ'
       end
+    end
+  end
+
+  describe '作品一覧' do
+    context '存在する場合' do
+      subject { find('h2 + .table-responsive') }
+
+      before do
+        create :work, title: 'comorebi', work_creators: [build(:work_creator, role: :author, creator: creator)]
+        visit subject_path
+      end
+
+      it do
+        aggregate_failures do
+          expect(subject).to have_content 'comorebi'
+          expect(subject).to have_content '作者：ケロ'
+        end
+      end
+    end
+
+    context '存在しない場合' do
+      before { visit subject_path }
+
+      it { is_expected.not_to have_selector 'h2 + .table-responsive' }
     end
   end
 end

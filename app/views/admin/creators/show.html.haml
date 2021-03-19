@@ -29,6 +29,7 @@
         %ul.mb-0
           - @creator.creator_sites.each do |creator_site|
             %li= link_to creator_site.name, creator_site.url, target: :_blank
-%section
-  %h2.page-sub-title 作品
-= render 'admin/works/table', works: @works
+- if @works.present?
+  %section
+    %h2.page-sub-title 作品
+    = render 'admin/works/table', works: @works
