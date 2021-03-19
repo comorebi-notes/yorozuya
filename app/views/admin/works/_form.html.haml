@@ -21,8 +21,7 @@
     .card.card-body.js-work-creator-fields
       %legend.mb-1
         .form-row.text-sm.d-none.d-sm-flex
-          .col-1= WorkCreator.human_attribute_name :guest
-          .col-3= WorkCreator.human_attribute_name :role
+          .col-3.offset-1= WorkCreator.human_attribute_name :role
           .col-3= WorkCreator.human_attribute_name :creator_id
           .col-3= WorkCreator.human_attribute_name :name
           .col-2= WorkCreator.human_attribute_name :xorder

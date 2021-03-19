@@ -35,7 +35,7 @@ end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/support/factories"
+  config.fixture_path = Rails.root.join('spec/support/factories')
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -76,4 +76,15 @@ end
 
 Capybara.configure do |config|
   config.automatic_label_click = true
+end
+
+# 以下を実行しておかないと、system spec 内で binding.pry した時に、FactoryBot が使用できない等、思わぬ挙動をすることがある
+# test.rb に config.autoloader = :classic を書く方法でも解消できるが、テスト中に2回 ActiveStorage が呼ばれると定数が二重に定義されることがある
+begin
+  require 'active_storage/blob'
+ensure
+  require 'active_storage/blob/analyzable'
+  require 'active_storage/blob/identifiable'
+  require 'active_storage/blob/representable'
+  require 'active_storage/blob'
 end

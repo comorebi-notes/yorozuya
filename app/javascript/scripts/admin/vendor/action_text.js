@@ -28,7 +28,7 @@ class RichText {
   }
 
   removeOriginalHeadingButton() {
-    this.buttonGroupBlockTools.removeChild(this.originalHeadingButton)
+    if (this.originalHeadingButton) this.buttonGroupBlockTools.removeChild(this.originalHeadingButton)
   }
 
   insertNewHeadingButton() {
@@ -69,7 +69,7 @@ class RichText {
   }
 
   get originalHeadingButton() {
-    return this.toolbarElement.querySelector('[data-trix-attribute=heading1]')
+    return this.toolbarElement.querySelector('.trix-button-group--block-tools > [data-trix-attribute=heading1]')
   }
 
   get quoteButton() {
@@ -161,6 +161,8 @@ const addBackgroundColorAttributes = () => {
   })
 }
 
-addHeadingAttributes()
-addForegroundColorAttributes()
-addBackgroundColorAttributes()
+document.addEventListener('turbolinks:load', () => {
+  addHeadingAttributes()
+  addForegroundColorAttributes()
+  addBackgroundColorAttributes()
+})

@@ -26,22 +26,15 @@ describe '/admin/creators', type: :system do
 
     it '表示が正しいこと' do
       aggregate_failures do
-        expect(find('main table tbody tr:nth-of-type(1) th:nth-of-type(1)')).to have_content creator.id
-        expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(1)')).to have_selector '.icon--thumb'
-        expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(2)')).to have_content 'ケロ'
-        expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(3)')).to have_content 'yorozu no mono wo tsukurikeri.'
-        expect(find('main table tbody tr:nth-of-type(1) td:nth-of-type(4)')).to have_link 'ホームページ', href: 'https://example.com'
+        within 'main table tbody tr:nth-of-type(1)' do
+          expect(find('th:nth-of-type(1)')).to have_content creator.id
+          expect(find('td:nth-of-type(1)')).to have_selector '.icon--thumb'
+          expect(find('td:nth-of-type(2)')).to have_link 'ケロ', href: admin_creator_path(creator)
+          expect(find('td:nth-of-type(3)')).to have_content 'yorozu no mono wo tsukurikeri.'
+          expect(find('td:nth-of-type(4)')).to have_link 'ホームページ', href: 'https://example.com'
+          expect(find('td:nth-of-type(5)')).to have_link '編集', href: edit_admin_creator_path(creator)
+        end
       end
-    end
-
-    it '詳細ページに遷移すること' do
-      click_link 'ケロ'
-      expect(page).to have_current_path admin_creator_path(creator)
-    end
-
-    it '編集ボタンが動作すること' do
-      click_link '編集'
-      expect(page).to have_current_path edit_admin_creator_path(creator)
     end
   end
 

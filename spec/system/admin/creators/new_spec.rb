@@ -5,11 +5,13 @@ describe '/admin/creators/new', type: :system do
 
   let(:subject_path) { new_admin_creator_path }
 
-  before { login }
+  before do
+    login
+    visit subject_path
+  end
 
   context '成功する場合' do
     before do
-      visit subject_path
       within 'form > div:first-of-type' do
         fill_in '名前', with: '穂村あかね'
       end
@@ -39,10 +41,7 @@ describe '/admin/creators/new', type: :system do
   end
 
   context '失敗する場合' do
-    before do
-      visit subject_path
-      force_submit!
-    end
+    before { force_submit! }
 
     it do
       aggregate_failures do

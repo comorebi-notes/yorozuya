@@ -33,9 +33,10 @@ class WorkCreator < ApplicationRecord
                designer: 40, programmer: 41, planner: 42 }
 
   validates :name, presence: true, if: :guest?
-  validates :name, absence: true, unless: :guest?
-  validates :creator_id, absence: true, if: :guest?
   validates :creator_id, presence: true, unless: :guest?
   validates :role, presence: true
   validates :xorder, presence: true
+
+  before_validation -> { self.name = nil }, unless: :guest?
+  before_validation -> { self.creator_id = nil }, if: :guest?
 end

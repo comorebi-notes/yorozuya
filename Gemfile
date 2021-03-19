@@ -71,6 +71,7 @@ group :test do
   # System spec
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'launchy'
 
   # Data
   gem 'factory_bot_rails'

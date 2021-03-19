@@ -54,7 +54,7 @@ describe WorkCreator, type: :model do
             expect(subject.errors).to be_of_kind :role, :blank
             expect(subject.errors).to be_of_kind :name, :blank
             expect(subject.errors).to be_of_kind :xorder, :blank
-            expect(subject.errors).to be_of_kind :creator_id, :present
+            expect(subject.creator_id).to eq nil
           end
         end
       end
@@ -66,9 +66,9 @@ describe WorkCreator, type: :model do
           aggregate_failures do
             expect(subject).to be_invalid
             expect(subject.errors).to be_of_kind :role, :blank
-            expect(subject.errors).to be_of_kind :name, :present
             expect(subject.errors).to be_of_kind :xorder, :blank
             expect(subject.errors).to be_of_kind :creator_id, :blank
+            expect(subject.name).to eq nil
           end
         end
       end

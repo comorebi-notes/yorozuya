@@ -3,6 +3,8 @@
   %head
     %title yorozuya Admin
     %meta{ name: :viewport, content: 'width=device-width,initial-scale=1' }
+    %meta{ content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+    %meta{ charset: 'utf-8' }
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': :reload
