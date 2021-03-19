@@ -3,7 +3,6 @@
     %thead
       %tr
         %th ID
-        %th= Work.human_attribute_name :eye_catch
         %th= Work.human_attribute_name :title
         %th= Work.human_attribute_name :status
         %th= Work.human_attribute_name :slug
@@ -17,11 +16,11 @@
           %th= work.id
           %td
             = link_to admin_work_path(work) do
+              .font-weight-bold.pb-1= work.title
               - if work.eye_catch.attached?
                 = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:thumb]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--thumb'
               - else
                 %span.font-weight-bolder.text-sm NO IMAGE
-          %td= link_to work.title, admin_work_path(work), class: 'font-weight-bold'
           %td= work.human_attribute_enum :status
           %td
             %code.text-break= work.slug
