@@ -21,7 +21,7 @@
                 = image_tag work.eye_catch.variant(resize_to_fill: Work::EYE_CATCH_SIZES[:thumb]), alt: t('admin.label.eye_catch', title: work.title), class: 'eye-catch--thumb'
               - else
                 %span.font-weight-bolder.text-sm NO IMAGE
-          %td.font-weight-bold= work.title
+          %td= link_to work.title, admin_work_path(work), class: 'font-weight-bold'
           %td= work.human_attribute_enum :status
           %td
             %code.text-break= work.slug

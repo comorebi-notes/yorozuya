@@ -15,6 +15,12 @@
     font-size: $h5-font-size
   &-brown
     color: $brown
+  &-underline
+    text-decoration: underline
+    @at-root
+      a#{&}
+        +link-action
+          text-decoration: none
 
 .line-height-1
   line-height: 1 !important
@@ -86,3 +92,139 @@
       > div
         padding-left: 2.8rem
         padding-right: 2.8rem
+
+.bg
+  &-gray
+    background-color: $gray
+    &-lighest
+      background-color: $gray-lightest
+    &-ligher
+      background-color: $gray-lighter
+    &-light
+      background-color: $gray-light
+    &-dark
+      background-color: $gray-dark
+    &-darker
+      background-color: $gray-darker
+    &-darkest
+      background-color: $gray-darkest
+
+.table
+  &__th
+    &--min
+      th
+        @extend .text-nowrap
+        width: 1px
+    &--25
+      th
+        width: 25%
+    &--33
+      th
+        width: 33%
+  &__td
+    &--with-buttons
+      $button-gutter-width: .3rem
+      padding-top: $table-cell-padding - $button-gutter-width !important
+      padding-bottom: $table-cell-padding - $button-gutter-width !important
+      ul
+        margin-bottom: 0
+        li
+          margin-top: $button-gutter-width
+          margin-bottom: $button-gutter-width
+
+.list
+  &-wide
+    li:not(:last-child)
+      margin-bottom: .4rem
+
+.icon
+  @extend .rounded
+  a &
+    transition: all $animation-duration ease-in-out
+    +link-action
+      border-radius: 50% !important
+      opacity: .8
+  &--default
+    @extend .icon
+    width: 128px
+    height: 128px
+  &--thumb
+    @extend .icon
+    width: 64px
+    height: 64px
+  &--icon
+    @extend .icon
+    border-radius: 50% !important
+    width: 24px
+    height: 24px
+
+.eye-catch
+  @extend .rounded
+  a &
+    transition: all $animation-duration ease-in-out
+    +link-action
+      opacity: .8
+  &--default
+    @extend .eye-catch
+    width: 600px
+    height: 315px
+  &--thumb
+    @extend .eye-catch
+    width: 100px
+    height: 52.5px
+
+// ==== Forms ====
+.label
+  &--required
+    &:after
+      content: "(必須)"
+      display: inline-block
+      color: $danger
+      font-size: .75em
+      font-weight: bold
+      margin-left: .2rem
+
+.form-date-select
+  display: flex
+  align-items: baseline
+  select
+    width: auto
+    min-width: 80px
+    margin: 0 .24rem 0 .4rem
+    +media-breakpoint-down(xs)
+      min-width: 68px
+    &:first-of-type
+      min-width: 120px
+      margin-left: 0
+      +media-breakpoint-down(xs)
+        min-width: 84px
+  &:after
+    content: "日"
+  span
+    &:first-of-type:after
+      content: "年"
+    &:last-of-type:after
+      content: "月"
+
+// ========== Library ==========
+// ==== Gretel ====
+.breadcrumbs
+  margin-bottom: 3rem
+  color: $gray
+  font-size: $font-size-xs
+  font-weight: bold
+  &__separator
+    color: $gray-light
+    margin: 0 .48rem
+    &:before
+      content: ">"
+      display: inline-block
+      transform: scale(.4, .8)
+
+// ==== Pagy ====
+.pagy-bootstrap-nav
+  .table-responsive + &
+    margin-top: 1.2rem
+  .disabled
+    .page-link
+      color: $gray-lighter
