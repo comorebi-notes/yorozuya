@@ -46,7 +46,7 @@ class Admin::CreatorsController < Admin::ApplicationController
   private
 
   def creator_params
-    params.require(:creator).permit(:name, :profile, :icon, creator_sites_attributes: %i[id name kind url _destroy])
+    params.require(:creator).permit(:name, :profile, :icon, creator_sites_attributes: %i[id name kind url xorder _destroy])
   end
 
   def set_new_creator

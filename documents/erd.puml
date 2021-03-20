@@ -72,7 +72,8 @@ entity Comment {
 entity WorkSite {
   id
   --
-  title
+  name
+  kind
   url
   xorder
   --
@@ -170,6 +171,7 @@ entity CreatorSite {
   name
   kind
   url
+  xorder
   --
   creator_id
 }

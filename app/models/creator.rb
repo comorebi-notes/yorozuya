@@ -13,11 +13,11 @@ class Creator < ApplicationRecord
 
   has_one_attached :icon
 
-  has_many :creator_sites, dependent: :destroy
+  has_many :creator_sites, -> { order(:xorder) }, dependent: :destroy, inverse_of: :creator
   has_many :work_creators, -> { order(:id) }, dependent: :destroy, inverse_of: :creator
   has_many :works, through: :work_creators
 
-  accepts_nested_attributes_for :creator_sites, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :creator_sites, reject_if: ->(attributes) { attributes[:kind].blank? }, allow_destroy: true
 
   validates :name, presence: true
 end

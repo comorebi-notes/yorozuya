@@ -20,10 +20,12 @@ ja:
         name: リンクの名前
         kind: リンクの種類
         url: リンクのURL
+        xorder: リンクの順番
       creator_site:
         name: 名前
         kind: 種類
         url: URL
+        xorder: 順番
       creator_site/kind:
         general: 一般サイト
         email: メールアドレス

@@ -6,6 +6,7 @@
 #  kind       :integer          default("general"), not null
 #  name       :string(255)      not null
 #  url        :string(255)      not null
+#  xorder     :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  creator_id :bigint           not null
