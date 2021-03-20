@@ -7,7 +7,7 @@
         %th= Work.human_attribute_name :status
         %th= Work.human_attribute_name :slug
         %th= Work.human_attribute_name :release_date
-        %th= Work.human_attribute_name :work_creators
+        %th.d-none.d-md-table-cell= Work.human_attribute_name :work_creators
         %th= Work.human_attribute_name :like
         %th
     %tbody
@@ -25,7 +25,7 @@
           %td
             %code.text-break= work.slug
           %td= l work.release_date if work.release_date.present?
-          %td= render 'admin/works/creator_list', work: work
+          %td.d-none.d-md-table-cell= render 'admin/works/creator_list', work: work
           %td= work.like.to_s(:delimited)
           %td.table__td--with-buttons
             %ul.list-inline

@@ -6,7 +6,7 @@
       .col-10.col-sm-12
         = f.check_box :guest, class: 'custom-control-input js-guest-checkbox'
         = f.label :guest, class: 'custom-control-label mb-1 mb-sm-0' do
-          %span.col-form-label-sm= WorkCreator.human_attribute_name :guest
+          %span.col-form-label-sm.d-none.d-xl-inline.text-nowrap= WorkCreator.human_attribute_name :guest
   .col-sm-3
     .form-row
       .col-2.d-sm-none= f.label :role, class: 'col-form-label-sm'

@@ -1,15 +1,18 @@
-.navbar.navbar-expand.navbar-dark.bg-primary
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
   = link_to 'yorozuya', admin_root_path, class: 'navbar-brand font-weight-bolder py-1'
-  .navbar-collapse
-    .mr-auto
+  = button_tag type: :button, data: { toggle: :collapse, target: '#navbar-content' }, aria: { controls: 'navbar-content', expanded: :false }, class: 'navbar-toggler' do
+    %span.navbar-toggler-icon
+  .navbar-collapse.collapse#navbar-content
+    .navbar-nav.mr-auto
+      .d-lg-none= render 'layouts/admin/nav_menu'
     - if logged_in?
-      .d-none.d-sm-inline.text-white.mr-2
+      .d-none.d-lg-inline.text-white.mr-2
         %i.fa.fa-user.fa-fw.fa-lg
         %span= current_user.name
-      = link_to admin_logout_path, method: :delete, class: 'btn btn-sm btn-light text-primary' do
+      = link_to admin_logout_path, method: :delete, class: 'btn btn-sm btn-light text-primary d-block d-lg-inline-block mb-2 mb-lg-0' do
         %i.fa.fa-sign-out-alt.fa-fw
         = t('.logout')
     - else
-      = link_to admin_login_path, class: 'btn btn-sm btn-light text-primary' do
+      = link_to admin_login_path, class: 'btn btn-sm btn-light text-primary d-block d-lg-inline-block mb-2 mb-lg-0' do
         %i.fa.fa-sign-in-alt.fa-fw
         = t('.login')
