@@ -67,6 +67,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'simplecov'
 
   # System spec
   gem 'capybara'

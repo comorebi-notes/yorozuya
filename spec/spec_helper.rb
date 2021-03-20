@@ -95,6 +95,18 @@ RSpec.configure do |config|
 =end
 end
 
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter do |source_file|
+    source_file.lines.count < 5
+  end
+
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Helpers', 'app/helpers'
+end
+
 def login(user = create(:user), password = 'P@ssw0rd')
   visit admin_login_path
   within 'main' do
